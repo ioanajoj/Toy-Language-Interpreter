@@ -1,0 +1,3 @@
+1. FileTable should also have an additional Interface?
+2. Can we implement Heap based on MyIDictionary?
+3. Use same interface for symtable, filtable, heap

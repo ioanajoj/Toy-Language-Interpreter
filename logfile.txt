@@ -1,0 +1,176 @@
+Program State index:0
+Execution Stack:
+OpenFile test.in and mark it as var_f
+Read from file var_f variable var_c
+print var_c
+IF var_c THEN Read from file var_f variable var_c
+print var_c ELSE print 0
+CloseFile var_f
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+
+Heap Memory:
+{}
+
+Program State index:0
+Execution Stack:
+OpenFile test.in and mark it as var_f
+Read from file var_f variable var_c
+print var_c
+IF var_c THEN Read from file var_f variable var_c
+print var_c ELSE print 0
+CloseFile var_f
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+
+Heap Memory:
+{}
+
+Program State index:0
+Execution Stack:
+OpenFile test.in and mark it as var_f
+Read from file var_f variable var_c
+print var_c
+IF var_c THEN Read from file var_f variable var_c
+print var_c ELSE print 0
+CloseFile var_f
+Symbol Table:
+{}
+Output:
+[]
+File Table:
+
+Heap Memory:
+{}
+
+Program State index:0
+Execution Stack:
+Read from file var_f variable var_c
+print var_c
+IF var_c THEN Read from file var_f variable var_c
+print var_c ELSE print 0
+CloseFile var_f
+Symbol Table:
+{var_f=1}
+Output:
+[]
+File Table:
+1: test.in
+Heap Memory:
+{}
+
+Program State index:0
+Execution Stack:
+Read from file var_f variable var_c
+print var_c
+IF var_c THEN Read from file var_f variable var_c
+print var_c ELSE print 0
+CloseFile var_f
+Symbol Table:
+{var_f=1}
+Output:
+[]
+File Table:
+1: test.in
+Heap Memory:
+{}
+
+Program State index:0
+Execution Stack:
+print var_c
+IF var_c THEN Read from file var_f variable var_c
+print var_c ELSE print 0
+CloseFile var_f
+Symbol Table:
+{var_f=1, var_c=15}
+Output:
+[]
+File Table:
+1: test.in
+Heap Memory:
+{}
+
+Program State index:0
+Execution Stack:
+IF var_c THEN Read from file var_f variable var_c
+print var_c ELSE print 0
+CloseFile var_f
+Symbol Table:
+{var_f=1, var_c=15}
+Output:
+[15]
+File Table:
+1: test.in
+Heap Memory:
+{}
+
+Program State index:0
+Execution Stack:
+Read from file var_f variable var_c
+print var_c
+CloseFile var_f
+Symbol Table:
+{var_f=1, var_c=15}
+Output:
+[15]
+File Table:
+1: test.in
+Heap Memory:
+{}
+
+Program State index:0
+Execution Stack:
+Read from file var_f variable var_c
+print var_c
+CloseFile var_f
+Symbol Table:
+{var_f=1, var_c=15}
+Output:
+[15]
+File Table:
+1: test.in
+Heap Memory:
+{}
+
+Program State index:0
+Execution Stack:
+print var_c
+CloseFile var_f
+Symbol Table:
+{var_f=1, var_c=50}
+Output:
+[15]
+File Table:
+1: test.in
+Heap Memory:
+{}
+
+Program State index:0
+Execution Stack:
+CloseFile var_f
+Symbol Table:
+{var_f=1, var_c=50}
+Output:
+[15, 50]
+File Table:
+1: test.in
+Heap Memory:
+{}
+
+Program State index:0
+Execution Stack:
+Symbol Table:
+{var_f=1, var_c=50}
+Output:
+[15, 50]
+File Table:
+
+Heap Memory:
+{}
+
