@@ -18,9 +18,4 @@ public class PrintStmt implements IStmt{
     public String toString() {
         return "print " + expr;
     }
-
-    @Override
-    public IStmt duplicate() {
-        return new PrintStmt(this.expr.duplicate());
-    }
 }

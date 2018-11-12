@@ -30,9 +30,4 @@ public class ArithmExpr extends Expr {
     public String toString() {
         return expr1 + " " + operator + " " + expr2;
     }
-
-    @Override
-    Expr duplicate() {
-        return new ArithmExpr(this.operator, this.expr1.duplicate(), this.expr2.duplicate());
-    }
 }

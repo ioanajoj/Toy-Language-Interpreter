@@ -16,9 +16,4 @@ public class ConstExpr extends Expr {
     public String toString() {
         return Integer.toString(number);
     }
-
-    @Override
-    Expr duplicate() {
-        return new ConstExpr(this.number);
-    }
 }

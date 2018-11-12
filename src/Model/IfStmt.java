@@ -27,9 +27,4 @@ public class IfStmt implements IStmt {
         else exeStack.push(elseS);
         return state;
     }
-
-    @Override
-    public IStmt duplicate() {
-        return new IfStmt(this.expr.duplicate(), this.thenS.duplicate(), this.elseS.duplicate());
-    }
 }

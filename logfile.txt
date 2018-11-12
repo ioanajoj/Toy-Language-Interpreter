@@ -1,11 +1,12 @@
 Program State index:0
 Execution Stack:
-OpenFile test.in and mark it as var_f
-Read from file var_f variable var_c
-print var_c
-IF var_c THEN Read from file var_f variable var_c
-print var_c ELSE print 0
-CloseFile var_f
+v = 10
+v <- 20
+a <- 22
+writeHeap: a<-30
+print a
+print readHeap: a
+a = 0
 Symbol Table:
 {}
 Output:
@@ -17,12 +18,13 @@ Heap Memory:
 
 Program State index:0
 Execution Stack:
-OpenFile test.in and mark it as var_f
-Read from file var_f variable var_c
-print var_c
-IF var_c THEN Read from file var_f variable var_c
-print var_c ELSE print 0
-CloseFile var_f
+v = 10
+v <- 20
+a <- 22
+writeHeap: a<-30
+print a
+print readHeap: a
+a = 0
 Symbol Table:
 {}
 Output:
@@ -34,12 +36,13 @@ Heap Memory:
 
 Program State index:0
 Execution Stack:
-OpenFile test.in and mark it as var_f
-Read from file var_f variable var_c
-print var_c
-IF var_c THEN Read from file var_f variable var_c
-print var_c ELSE print 0
-CloseFile var_f
+v = 10
+v <- 20
+a <- 22
+writeHeap: a<-30
+print a
+print readHeap: a
+a = 0
 Symbol Table:
 {}
 Output:
@@ -51,126 +54,148 @@ Heap Memory:
 
 Program State index:0
 Execution Stack:
-Read from file var_f variable var_c
-print var_c
-IF var_c THEN Read from file var_f variable var_c
-print var_c ELSE print 0
-CloseFile var_f
+v = 10
+v <- 20
+a <- 22
+writeHeap: a<-30
+print a
+print readHeap: a
+a = 0
 Symbol Table:
-{var_f=1}
+{}
 Output:
 []
 File Table:
-1: test.in
+
 Heap Memory:
 {}
 
 Program State index:0
 Execution Stack:
-Read from file var_f variable var_c
-print var_c
-IF var_c THEN Read from file var_f variable var_c
-print var_c ELSE print 0
-CloseFile var_f
+v = 10
+v <- 20
+a <- 22
+writeHeap: a<-30
+print a
+print readHeap: a
+a = 0
 Symbol Table:
-{var_f=1}
+{}
 Output:
 []
 File Table:
-1: test.in
+
 Heap Memory:
 {}
 
 Program State index:0
 Execution Stack:
-print var_c
-IF var_c THEN Read from file var_f variable var_c
-print var_c ELSE print 0
-CloseFile var_f
+v <- 20
+a <- 22
+writeHeap: a<-30
+print a
+print readHeap: a
+a = 0
 Symbol Table:
-{var_f=1, var_c=15}
+{v=10}
 Output:
 []
 File Table:
-1: test.in
+
 Heap Memory:
 {}
 
 Program State index:0
 Execution Stack:
-IF var_c THEN Read from file var_f variable var_c
-print var_c ELSE print 0
-CloseFile var_f
+a <- 22
+writeHeap: a<-30
+print a
+print readHeap: a
+a = 0
 Symbol Table:
-{var_f=1, var_c=15}
+{v=1}
 Output:
-[15]
+[]
 File Table:
-1: test.in
+
 Heap Memory:
-{}
+{1=20}
 
 Program State index:0
 Execution Stack:
-Read from file var_f variable var_c
-print var_c
-CloseFile var_f
+writeHeap: a<-30
+print a
+print readHeap: a
+a = 0
 Symbol Table:
-{var_f=1, var_c=15}
+{v=1, a=2}
 Output:
-[15]
+[]
 File Table:
-1: test.in
+
 Heap Memory:
-{}
+{1=20, 2=22}
 
 Program State index:0
 Execution Stack:
-Read from file var_f variable var_c
-print var_c
-CloseFile var_f
+print a
+print readHeap: a
+a = 0
 Symbol Table:
-{var_f=1, var_c=15}
+{v=1, a=2}
 Output:
-[15]
+[]
 File Table:
-1: test.in
+
 Heap Memory:
-{}
+{1=20, 2=30}
 
 Program State index:0
 Execution Stack:
-print var_c
-CloseFile var_f
+print readHeap: a
+a = 0
 Symbol Table:
-{var_f=1, var_c=50}
+{v=1, a=2}
 Output:
-[15]
+[2]
 File Table:
-1: test.in
+
 Heap Memory:
-{}
+{1=20, 2=30}
 
 Program State index:0
 Execution Stack:
-CloseFile var_f
+print readHeap: a
+a = 0
 Symbol Table:
-{var_f=1, var_c=50}
+{v=1, a=2}
 Output:
-[15, 50]
+[2]
 File Table:
-1: test.in
+
 Heap Memory:
-{}
+{1=20, 2=30}
+
+Program State index:0
+Execution Stack:
+a = 0
+Symbol Table:
+{v=1, a=2}
+Output:
+[2, 30]
+File Table:
+
+Heap Memory:
+{1=20, 2=30}
 
 Program State index:0
 Execution Stack:
 Symbol Table:
-{var_f=1, var_c=50}
+{v=1, a=0}
 Output:
-[15, 50]
+[2, 30]
 File Table:
 
 Heap Memory:
-{}
+{1=20}
 

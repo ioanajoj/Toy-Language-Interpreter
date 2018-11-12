@@ -14,11 +14,6 @@ public class ReadHeap extends Expr {
     }
 
     @Override
-    Expr duplicate() {
-        return null;
-    }
-
-    @Override
     public String toString() {
         return "readHeap: " + variableName;
     }

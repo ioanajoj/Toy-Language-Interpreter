@@ -20,11 +20,6 @@ public class WriteHeap implements IStmt {
     }
 
     @Override
-    public IStmt duplicate() {
-        return null;
-    }
-
-    @Override
     public String toString() {
         return "writeHeap: " + variableName + "<-" + expression;
     }

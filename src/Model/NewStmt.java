@@ -22,9 +22,4 @@ public class NewStmt implements IStmt {
     public String toString() {
         return variable + " <- " + expression;
     }
-
-    @Override
-    public IStmt duplicate() {
-        return new NewStmt(variable, expression);
-    }
 }

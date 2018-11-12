@@ -21,9 +21,4 @@ public class CompStmt implements IStmt {
     public String toString() {
         return first + "\n" + second;
     }
-
-    @Override
-    public IStmt duplicate() {
-        return new CompStmt(first.duplicate(), second.duplicate());
-    }
 }

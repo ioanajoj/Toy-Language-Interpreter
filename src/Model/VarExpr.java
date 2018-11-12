@@ -16,9 +16,4 @@ public class VarExpr extends Expr{
     public String toString() {
         return id;
     }
-
-    @Override
-    Expr duplicate() {
-        return new VarExpr(this.id);
-    }
 }

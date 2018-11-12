@@ -1,12 +1,16 @@
 package Model;
 
+import javafx.util.Pair;
+
+import java.io.BufferedReader;
+
 public class PrgState {
     private MyIStack<IStmt> exeStack;
     private MyIDictionary<String, Integer> symTable;
     private MyIList<Integer> out;
-    private IStmt originalProgram;
-    private FileTable fileTable;
-    private Heap heapMemory;
+    private IDictionaryWithoutKey<Integer, Pair<String, BufferedReader>> fileTable;
+    private IDictionaryWithoutKey<Integer, Integer> heapMemory;
+    private IStmt originalProgram; // copy of the program (duplicate)
 
     public PrgState(MyIStack<IStmt> exeStack, MyIDictionary<String, Integer> symTable, MyIList<Integer> out, IStmt originalProgram) {
         this.exeStack = exeStack;
@@ -34,6 +38,10 @@ public class PrgState {
         this.originalProgram = originalProgram;
     }
 
+    public void setFileTable(FileTable fileTable) {
+        this.fileTable = fileTable;
+    }
+
     public MyIStack<IStmt> getExeStack() {
         return exeStack;
     }
@@ -46,16 +54,11 @@ public class PrgState {
         return out;
     }
 
-    public FileTable getFileTable() { return fileTable; }
+    public IDictionaryWithoutKey<Integer, Pair<String, BufferedReader>> getFileTable() { return fileTable; }
 
-    public Heap getHeapMemory() { return heapMemory; }
-
-    public void setFileTable(FileTable fileTable) {
-        this.fileTable = fileTable;
-    }
+    public IDictionaryWithoutKey<Integer, Integer> getHeapMemory() { return heapMemory; }
 
     public IStmt getOriginalProgram() {
-
         return originalProgram;
     }
 }

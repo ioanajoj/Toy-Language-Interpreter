@@ -30,11 +30,6 @@ public class ReadFile implements IStmt {
     }
 
     @Override
-    public IStmt duplicate() {
-        return null;
-    }
-
-    @Override
     public String toString() {
         return "Read from file " + varFile + " variable " + varName;
     }

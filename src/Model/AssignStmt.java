@@ -23,9 +23,4 @@ public class AssignStmt implements IStmt{
         else symTable.put(id,val);
         return state;
     }
-
-    @Override
-    public IStmt duplicate() {
-        return new AssignStmt(this.id, this.expr.duplicate());
-    }
 }

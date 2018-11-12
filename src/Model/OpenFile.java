@@ -35,11 +35,6 @@ public class OpenFile implements IStmt {
     }
 
     @Override
-    public IStmt duplicate() {
-        return new OpenFile(this.varFile, this.fileName);
-    }
-
-    @Override
     public String toString() {
         return "OpenFile " + fileName + " and mark it as " + varFile;
     }

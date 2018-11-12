@@ -12,7 +12,10 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Controller {
-    // PRINT FLAG
+    /*
+        PRINT FLAG for compound statements!!
+    */
+
     private IRepository repo;
 
     public Controller(IRepository repo) {
