@@ -185,6 +185,61 @@ public class Interpreter {
         PrgState prg10 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), ex10);
         repo10.addProgram(prg10);
 
+        /*
+        Example 11
+        v = 10 + (2<6);
+        Print(v)
+        */
+        ListRepository repo11 = new ListRepository("logfile.txt");
+        Controller ctr11 = new Controller(repo11);
+        IStmt ex11 = new CompStmt(new AssignStmt("v",new ArithmExpr('+', new ConstExpr(10), new BooleanExpr(">", new ConstExpr(2), new ConstExpr(6)))), new PrintStmt(new VarExpr("v")));
+        PrgState prg11 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), ex11);
+        repo11.addProgram(prg11);
+
+        /*
+        Example 12
+        v = 6;
+        while(v-4) {
+            print(v)
+            v = v-1
+        }
+        print(v)
+        */
+        ListRepository repo12 = new ListRepository("logfile.txt");
+        Controller ctr12 = new Controller(repo12);
+        IStmt inWhile12 = new CompStmt(new PrintStmt(new VarExpr("v")), new AssignStmt("v", new ArithmExpr('-', new VarExpr("v"), new ConstExpr(1))));
+        IStmt whileSt12 = new WhileStmt(new ArithmExpr('-', new VarExpr("v"), new ConstExpr(4)), inWhile12);
+        IStmt comp12 = new CompStmt(new AssignStmt("v", new ConstExpr(6)), whileSt12);
+        IStmt ex12 = new CompStmt(comp12, new PrintStmt(new VarExpr("v")));
+        PrgState prg12 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), ex12);
+        repo12.addProgram(prg12);
+
+        /*
+        Example 13 -> Infinite Loop Exception
+        v = 6;
+        while(v) {
+            print(v)
+        }
+        */
+        ListRepository repo13 = new ListRepository("logfile.txt");
+        Controller ctr13 = new Controller(repo13);
+        IStmt ex13 = new WhileStmt(new ConstExpr(6), new PrintStmt(new ConstExpr(3)));
+        PrgState prg13 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), ex13);
+        repo13.addProgram(prg13);
+
+        /*
+        Example 14 -> Opened Files
+        openRFile(var_f,"test.in");
+        openRFile(var_f2,"test.in");
+         */
+        ListRepository repo14 = new ListRepository("logfile.txt");
+        Controller ctr14 = new Controller(repo14);
+        OpenFile open14_1 = new OpenFile("var_f", "test.in");
+        OpenFile open14_2 = new OpenFile("var_f2", "test2.in");
+        IStmt ex14 = new CompStmt(open14_1, open14_2);
+        PrgState prg14 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), ex14);
+        repo14.addProgram(prg14);
+
 
         /* ============================================= */
 
@@ -200,6 +255,10 @@ public class Interpreter {
         textMenu.addCommand(new RunExampleCommand("8", ex8.toString(), ctr8));
         textMenu.addCommand(new RunExampleCommand("9", ex9.toString(), ctr9));
         textMenu.addCommand(new RunExampleCommand("10", ex10.toString(), ctr10));
+        textMenu.addCommand(new RunExampleCommand("11", ex11.toString(), ctr11));
+        textMenu.addCommand(new RunExampleCommand("12", ex12.toString(), ctr12));
+        textMenu.addCommand(new RunExampleCommand("13", ex13.toString(), ctr13));
+        textMenu.addCommand(new RunExampleCommand("14", ex14.toString(), ctr14));
         textMenu.show();
     }
 }

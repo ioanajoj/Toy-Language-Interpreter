@@ -9,8 +9,8 @@ public class ReadHeap extends Expr {
 
     @Override
     int eval(MyIDictionary<String, Integer> table, IDictionaryWithoutKey<Integer, Integer> heapMemory) throws MissingVariableException, DivisionByZeroException {
-        Integer addressInHeap = table.get(variableName);
-        return heapMemory.get(addressInHeap);
+        Integer addressInHeap = table.lookUp(variableName);
+        return heapMemory.lookUp(addressInHeap);
     }
 
     @Override

@@ -50,8 +50,9 @@ public class MyStack<T> implements MyIStack<T> {
             result.append(stack.get(i));
             result.append("\n");
         }
-        if(!stack.isEmpty())
+        if(!stack.isEmpty()) {
             result.append(stack.get(stack.size()-1));
+        }
         return result.toString();
     }
 }

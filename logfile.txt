@@ -1,201 +1,54 @@
+*=========================*
+
 Program State index:0
 Execution Stack:
-v = 10
-v <- 20
-a <- 22
-writeHeap: a<-30
-print a
-print readHeap: a
-a = 0
+OpenFile test.in and mark it as var_f
+OpenFile test2.in and mark it as var_f2
 Symbol Table:
 {}
 Output:
 []
 File Table:
-
 Heap Memory:
 {}
 
+*=========================*
+
 Program State index:0
 Execution Stack:
-v = 10
-v <- 20
-a <- 22
-writeHeap: a<-30
-print a
-print readHeap: a
-a = 0
+OpenFile test2.in and mark it as var_f2
 Symbol Table:
-{}
+{var_f=1}
 Output:
 []
 File Table:
-
+1: test.in
 Heap Memory:
 {}
 
+*=========================*
+
 Program State index:0
 Execution Stack:
-v = 10
-v <- 20
-a <- 22
-writeHeap: a<-30
-print a
-print readHeap: a
-a = 0
 Symbol Table:
-{}
+{var_f=1, var_f2=2}
 Output:
 []
 File Table:
-
+1: test.in
+2: test2.in
 Heap Memory:
 {}
 
+*=========================*
+
 Program State index:0
 Execution Stack:
-v = 10
-v <- 20
-a <- 22
-writeHeap: a<-30
-print a
-print readHeap: a
-a = 0
 Symbol Table:
-{}
+{var_f=1, var_f2=2}
 Output:
 []
 File Table:
-
 Heap Memory:
 {}
-
-Program State index:0
-Execution Stack:
-v = 10
-v <- 20
-a <- 22
-writeHeap: a<-30
-print a
-print readHeap: a
-a = 0
-Symbol Table:
-{}
-Output:
-[]
-File Table:
-
-Heap Memory:
-{}
-
-Program State index:0
-Execution Stack:
-v <- 20
-a <- 22
-writeHeap: a<-30
-print a
-print readHeap: a
-a = 0
-Symbol Table:
-{v=10}
-Output:
-[]
-File Table:
-
-Heap Memory:
-{}
-
-Program State index:0
-Execution Stack:
-a <- 22
-writeHeap: a<-30
-print a
-print readHeap: a
-a = 0
-Symbol Table:
-{v=1}
-Output:
-[]
-File Table:
-
-Heap Memory:
-{1=20}
-
-Program State index:0
-Execution Stack:
-writeHeap: a<-30
-print a
-print readHeap: a
-a = 0
-Symbol Table:
-{v=1, a=2}
-Output:
-[]
-File Table:
-
-Heap Memory:
-{1=20, 2=22}
-
-Program State index:0
-Execution Stack:
-print a
-print readHeap: a
-a = 0
-Symbol Table:
-{v=1, a=2}
-Output:
-[]
-File Table:
-
-Heap Memory:
-{1=20, 2=30}
-
-Program State index:0
-Execution Stack:
-print readHeap: a
-a = 0
-Symbol Table:
-{v=1, a=2}
-Output:
-[2]
-File Table:
-
-Heap Memory:
-{1=20, 2=30}
-
-Program State index:0
-Execution Stack:
-print readHeap: a
-a = 0
-Symbol Table:
-{v=1, a=2}
-Output:
-[2]
-File Table:
-
-Heap Memory:
-{1=20, 2=30}
-
-Program State index:0
-Execution Stack:
-a = 0
-Symbol Table:
-{v=1, a=2}
-Output:
-[2, 30]
-File Table:
-
-Heap Memory:
-{1=20, 2=30}
-
-Program State index:0
-Execution Stack:
-Symbol Table:
-{v=1, a=0}
-Output:
-[2, 30]
-File Table:
-
-Heap Memory:
-{1=20}
 

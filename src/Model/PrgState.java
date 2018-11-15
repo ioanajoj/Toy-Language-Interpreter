@@ -3,6 +3,9 @@ package Model;
 import javafx.util.Pair;
 
 import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PrgState {
     private MyIStack<IStmt> exeStack;
@@ -60,5 +63,18 @@ public class PrgState {
 
     public IStmt getOriginalProgram() {
         return originalProgram;
+    }
+
+    public void closeAllFiles() {
+        // Should we also remove values from symTable?
+        Map<Integer, Pair<String, BufferedReader>> fT = new HashMap<>();
+        fileTable.getContent().forEach(fT::put);
+        fT.forEach((descriptor, pair) -> {
+            try {
+                new CloseFile(new ConstExpr(descriptor)).execute(this);
+            } catch (MissingVariableException | DivisionByZeroException | IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 }

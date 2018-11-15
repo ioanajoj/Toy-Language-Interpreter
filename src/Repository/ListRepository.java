@@ -41,13 +41,14 @@ public class ListRepository implements IRepository {
     public void logPrgState(int index) {
         PrintWriter printW;
         try {
+            PrgState prg = this.programs.get(index);
             printW = new PrintWriter(new BufferedWriter(new FileWriter(fileName, true)));
+            printW.println("*=========================*");
+            printW.println();
             printW.println("Program State index:" + index);
             printW.println("Execution Stack:");
-            PrgState prg = this.programs.get(index);
-            MyIStack<IStmt> execStack = prg.getExeStack();
-            if(!execStack.toString().equals(""))
-                printW.println(execStack);
+            if(!prg.getExeStack().toString().equals(""))
+                printW.println(prg.getExeStack());
 
             printW.println("Symbol Table:");
             printW.println(prg.getSymTable());
@@ -56,7 +57,8 @@ public class ListRepository implements IRepository {
             printW.println(prg.getOut());
 
             printW.println("File Table:");
-            printW.println(prg.getFileTable());
+            if(!prg.getFileTable().toString().equals(""))
+                printW.println(prg.getFileTable());
 
             printW.println("Heap Memory:");
             printW.println(prg.getHeapMemory());

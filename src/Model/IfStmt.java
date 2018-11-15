@@ -12,13 +12,6 @@ public class IfStmt implements IStmt {
     }
 
     @Override
-    public String toString() {
-        return "IF " + expr +
-                " THEN " + thenS +
-                " ELSE " + elseS;
-    }
-
-    @Override
     public PrgState execute(PrgState state) throws MissingVariableException, DivisionByZeroException {
         MyIDictionary<String, Integer> symTable = state.getSymTable();
         MyIStack<IStmt> exeStack = state.getExeStack();
@@ -26,5 +19,12 @@ public class IfStmt implements IStmt {
             exeStack.push(thenS);
         else exeStack.push(elseS);
         return state;
+    }
+
+    @Override
+    public String toString() {
+        return "IF " + expr +
+                " THEN " + thenS +
+                " ELSE " + elseS;
     }
 }

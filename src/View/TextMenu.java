@@ -1,13 +1,14 @@
 package View;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Scanner;
 
 class TextMenu {
-    private  HashMap<String, Command> commands;
+    private LinkedHashMap<String, Command> commands;
 
     TextMenu() {
-        commands = new HashMap<>();
+        commands = new LinkedHashMap<>();
     }
 
     void addCommand(Command com) {
@@ -15,12 +16,11 @@ class TextMenu {
     }
 
     private void printMenu() {
-        for(Command com: commands.values()) {
-            String line = com.getKey();
+        commands.forEach((line, command)-> {
             line += ":\n";
-            line += com.getDescription();
+            line += command.getDescription();
             System.out.println(line);
-        }
+        });
     }
 
     void show() {

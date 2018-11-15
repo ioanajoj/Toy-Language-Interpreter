@@ -12,8 +12,8 @@ public class WriteHeap implements IStmt {
     }
 
     @Override
-    public PrgState execute(PrgState state) throws MissingVariableException, DivisionByZeroException, IOException {
-        Integer address = state.getSymTable().get(variableName);
+    public PrgState execute(PrgState state) throws MissingVariableException, DivisionByZeroException {
+        Integer address = state.getSymTable().lookUp(variableName);
         Integer value = expression.eval(state.getSymTable(), state.getHeapMemory());
         state.getHeapMemory().replace(address, value);
         return state;

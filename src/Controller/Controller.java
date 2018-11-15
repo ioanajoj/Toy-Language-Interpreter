@@ -12,16 +12,15 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Controller {
-    /*
-        PRINT FLAG for compound statements!!
-    */
-
     private IRepository repo;
+    private Boolean printFlag;
 
     public Controller(IRepository repo) {
         this.repo = repo;
+        printFlag = true;
     }
 
+    // Controller?
     private HashMap<Integer, Integer> ConservativeGarbageCollector(Collection<Integer> symTableValues, Map<Integer, Integer> heapMemory) {
         Map<Integer, Integer> map = heapMemory.entrySet().stream()
                 .filter(e->symTableValues.contains(e.getKey()))
@@ -33,7 +32,7 @@ public class Controller {
     }
 
     private void displayState(PrgState state) {
-        System.out.println("State:");
+        System.out.println("*======================*");
         System.out.println("Execution Stack:");
         MyIStack<IStmt> exeStack = state.getExeStack();
         if(!exeStack.toString().equals(""))
@@ -58,13 +57,14 @@ public class Controller {
         System.out.println();
     }
 
-    private PrgState oneStepEval(PrgState state) throws MissingVariableException, DivisionByZeroException, IOException {
+    private PrgState oneStepEval(PrgState state) throws InfiniteLoopException, MissingVariableException, DivisionByZeroException, IOException {
         MyIStack<IStmt> stack = state.getExeStack();
         IStmt currentStmt = stack.pop();
+        printFlag = !(currentStmt.getClass().getName().equals("Model.CompStmt") && !stack.isEmpty());
         return currentStmt.execute(state);
-    } //return used for later assignments
+    }   //return used for later assignments
 
-    public void allStepEval() throws MissingVariableException, DivisionByZeroException, IOException {
+    public void allStepEval() throws InfiniteLoopException, MissingVariableException, DivisionByZeroException, IOException {
         PrgState prg = repo.getCurrentPrg();
         repo.clearFile();
         int index = repo.getCurrentIndex();
@@ -73,8 +73,13 @@ public class Controller {
             prg.getHeapMemory().setContent(ConservativeGarbageCollector(
                     prg.getSymTable().values(),
                     prg.getHeapMemory().getContent()));
-            repo.logPrgState(index);
-            displayState(prg);
+            if(printFlag) {
+                repo.logPrgState(index);
+                displayState(prg);
+            }
         }
+        prg.closeAllFiles();
+        repo.logPrgState(index);
+        displayState(prg);
     }
 }
