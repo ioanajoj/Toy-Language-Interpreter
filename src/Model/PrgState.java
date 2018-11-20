@@ -66,15 +66,13 @@ public class PrgState {
     }
 
     public void closeAllFiles() {
-        // Should we also remove values from symTable?
-        Map<Integer, Pair<String, BufferedReader>> fT = new HashMap<>();
-        fileTable.getContent().forEach(fT::put);
-        fT.forEach((descriptor, pair) -> {
+        fileTable.getContent().forEach((descriptor,pair) -> {
             try {
-                new CloseFile(new ConstExpr(descriptor)).execute(this);
-            } catch (MissingVariableException | DivisionByZeroException | IOException e) {
+                pair.getValue().close();
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         });
+        fileTable.reset();
     }
 }

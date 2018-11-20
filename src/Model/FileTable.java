@@ -27,8 +27,8 @@ public class FileTable implements IDictionaryWithoutKey<Integer, Pair<String, Bu
     }
 
     @Override
-    public Integer put(Pair<String, BufferedReader> v) {
-        Integer k = descriptor++;
+    public int put(Pair<String, BufferedReader> v) {
+        int k = descriptor++;
         fileTable.put(k, v);
         return k;
     }
@@ -83,5 +83,11 @@ public class FileTable implements IDictionaryWithoutKey<Integer, Pair<String, Bu
         if(result.length() == 0)
             return "";
         return result.substring(0, result.length()-1);
+    }
+
+    @Override
+    public void reset() {
+        this.fileTable = new HashMap<>();
+        this.descriptor = 1;
     }
 }

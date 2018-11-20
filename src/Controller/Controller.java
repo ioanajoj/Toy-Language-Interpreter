@@ -20,7 +20,7 @@ public class Controller {
         printFlag = true;
     }
 
-    // Controller?
+    // de ce in controller?
     private HashMap<Integer, Integer> ConservativeGarbageCollector(Collection<Integer> symTableValues, Map<Integer, Integer> heapMemory) {
         Map<Integer, Integer> map = heapMemory.entrySet().stream()
                 .filter(e->symTableValues.contains(e.getKey()))

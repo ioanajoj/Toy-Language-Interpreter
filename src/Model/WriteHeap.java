@@ -1,7 +1,5 @@
 package Model;
 
-import java.io.IOException;
-
 public class WriteHeap implements IStmt {
     private String variableName;
     private Expr expression;

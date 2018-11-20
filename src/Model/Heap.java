@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class Heap implements IDictionaryWithoutKey<Integer, Integer> {
     private HashMap<Integer, Integer> heapMemory;
-    private Integer address = 1;
+    private int address = 1;
 
     public Heap() {
         this.heapMemory = new HashMap<>();
@@ -25,8 +25,8 @@ public class Heap implements IDictionaryWithoutKey<Integer, Integer> {
     }
 
     @Override
-    public Integer put(Integer v) {
-        Integer newKey = address;
+    public int put(Integer v) {
+        int newKey = address;
         heapMemory.put(newKey,v);
         address++;
         return newKey;
@@ -74,5 +74,11 @@ public class Heap implements IDictionaryWithoutKey<Integer, Integer> {
     @Override
     public String toString() {
         return heapMemory.toString();
+    }
+
+    @Override
+    public void reset() {
+        this.heapMemory = new HashMap<>();
+        this.address = 1;
     }
 }
