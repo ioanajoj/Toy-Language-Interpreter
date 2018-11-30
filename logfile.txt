@@ -35,20 +35,6 @@ Symbol Table:
 Output:
 []
 File Table:
-1: test.in
-2: test2.in
-Heap Memory:
-{}
-
-*=========================*
-
-Program State index:0
-Execution Stack:
-Symbol Table:
-{var_f=1, var_f2=2}
-Output:
-[]
-File Table:
 Heap Memory:
 {}
 

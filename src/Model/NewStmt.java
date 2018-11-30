@@ -15,7 +15,7 @@ public class NewStmt implements IStmt {
         IDictionaryWithoutKey<Integer, Integer> heapMemory = state.getHeapMemory();
         Integer address = heapMemory.put(value);
         state.getSymTable().put(variable, address);
-        return state;
+        return null;
     }
 
     @Override

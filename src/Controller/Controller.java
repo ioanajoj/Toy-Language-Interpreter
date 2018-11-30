@@ -6,18 +6,19 @@ import javafx.util.Pair;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
 public class Controller {
     private IRepository repo;
-    private Boolean printFlag;
+    private ExecutorService executor;
 
     public Controller(IRepository repo) {
         this.repo = repo;
-        printFlag = true;
     }
 
     // de ce in controller?
@@ -60,7 +61,6 @@ public class Controller {
     private PrgState oneStepEval(PrgState state) throws InfiniteLoopException, MissingVariableException, DivisionByZeroException, IOException {
         MyIStack<IStmt> stack = state.getExeStack();
         IStmt currentStmt = stack.pop();
-        printFlag = !(currentStmt.getClass().getName().equals("Model.CompStmt") && !stack.isEmpty());
         return currentStmt.execute(state);
     }   //return used for later assignments
 
@@ -69,17 +69,70 @@ public class Controller {
         repo.clearFile();
         int index = repo.getCurrentIndex();
         while(!prg.getExeStack().isEmpty()) {
-            oneStepEval(prg);
+//            oneStepEval(prg);
+            prg.oneStep();
             prg.getHeapMemory().setContent(ConservativeGarbageCollector(
                     prg.getSymTable().values(),
                     prg.getHeapMemory().getContent()));
-            if(printFlag) {
-                repo.logPrgState(index);
-                displayState(prg);
-            }
+//            repo.logPrgState(index);
+            displayState(prg);
         }
         prg.closeAllFiles();
-        repo.logPrgState(index);
+//        repo.logPrgState(index);
         displayState(prg);
+    }
+
+    private void oneStepPerPrg() throws InfiniteLoopException, MissingVariableException, DivisionByZeroException, IOException, InterruptedException {
+        List<PrgState> programs = repo.getPrograms();
+
+        // create list of callable programs
+        List<Callable<PrgState>> callList = programs.stream()
+                .map((PrgState state) ->  (Callable<PrgState>) state::oneStep)
+                .collect(Collectors.toList());
+
+        // execute all programStates and remove the completed ones
+        List<PrgState> newPrograms = executor.invokeAll(callList).stream()
+                .map(future -> {
+                    try {
+                        return future.get();
+                    } catch (InterruptedException | ExecutionException e) {
+                        e.printStackTrace();
+                    }
+                    return null;
+                })
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
+
+        // set new ids
+        newPrograms.forEach(p->p.setId(repo.getNewId()));
+
+        // if program is completed, close all files
+        if(programs.size()==1 && programs.get(0).getExeStack().isEmpty())
+            programs.get(0).closeAllFiles();
+
+        // log all programs
+        repo.logAll();
+
+        // remove completed programs
+        programs = programs.stream().filter(PrgState::isNotCompleted).collect(Collectors.toList());
+
+        // add the new programs to the list
+        programs.addAll(newPrograms);
+
+        // update the list of programs in repo
+        repo.setPrograms(programs);
+    }
+
+    public void evaluateProgram() throws InterruptedException, IOException, MissingVariableException, DivisionByZeroException, InfiniteLoopException {
+        repo.clearFile();
+        executor = Executors.newFixedThreadPool(3);
+        List<PrgState> programs = repo.getPrograms();
+        while(programs.size() > 0) {
+            oneStepPerPrg();
+            programs.forEach(prg->prg.getHeapMemory().setContent(ConservativeGarbageCollector(
+                    prg.getSymTable().values(),
+                    prg.getHeapMemory().getContent())));
+        }
+        executor.shutdownNow();
     }
 }

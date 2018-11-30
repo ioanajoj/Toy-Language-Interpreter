@@ -6,20 +6,26 @@ import Model.PrgState;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ListRepository implements IRepository {
     private ArrayList<PrgState> programs;
     private String fileName;
     private int index;
+    private int id;
 
     public ListRepository(String fileName) {
         this.programs = new ArrayList<>();
         this.fileName = fileName;
         this.index = 0;
+        this.id = 0;
     }
 
     public void addProgram(PrgState prg) {
+        prg.setId(id);
         this.programs.add(prg);
+        this.id++;
     }
 
     @Override
@@ -38,14 +44,19 @@ public class ListRepository implements IRepository {
     }
 
     @Override
-    public void logPrgState(int index) {
+    public void logAll() {
+        this.programs.forEach(this::logPrgState);
+    }
+
+    @Override
+    public void logPrgState(PrgState prg) {
         PrintWriter printW;
         try {
-            PrgState prg = this.programs.get(index);
             printW = new PrintWriter(new BufferedWriter(new FileWriter(fileName, true)));
             printW.println("*=========================*");
             printW.println();
-            printW.println("Program State index:" + index);
+
+            printW.println("Program State index:" + prg.getId());
             printW.println("Execution Stack:");
             if(!prg.getExeStack().toString().equals(""))
                 printW.println(prg.getExeStack());
@@ -81,4 +92,17 @@ public class ListRepository implements IRepository {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public List<PrgState> getPrograms() {
+        return this.programs;
+    }
+
+    @Override
+    public void setPrograms(List<PrgState> newPrograms) {
+        programs.clear();
+        programs.addAll(newPrograms);
+    }
+
+    public int getNewId() { return id++; }
 }

@@ -31,7 +31,7 @@ public class OpenFile implements IStmt {
         MyIDictionary<String, Integer> symTable = state.getSymTable();
         symTable.put(varFile, newDesc);
 
-        return state;
+        return null;
     }
 
     @Override

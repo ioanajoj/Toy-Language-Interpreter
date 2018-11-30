@@ -11,7 +11,7 @@ public class PrintStmt implements IStmt{
     public PrgState execute(PrgState state) throws MissingVariableException, DivisionByZeroException {
         MyIList<Integer> output = state.getOut();
         output.add(expr.eval(state.getSymTable(), state.getHeapMemory()));
-        return state;
+        return null;
     }
 
     @Override

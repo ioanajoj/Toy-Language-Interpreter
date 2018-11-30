@@ -21,6 +21,6 @@ public class AssignStmt implements IStmt{
         if(symTable.get(id) != null)
             symTable.replace(id, val);
         else symTable.put(id,val);
-        return state;
+        return null;
     }
 }

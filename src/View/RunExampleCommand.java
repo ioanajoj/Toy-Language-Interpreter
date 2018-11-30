@@ -20,10 +20,11 @@ public class RunExampleCommand extends Command {
     @Override
     public void execute() {
         try {
-            controller.allStepEval();
+//            controller.allStepEval();
+            controller.evaluateProgram();
         } catch (MissingVariableException | DivisionByZeroException | FileNotFoundException | InfiniteLoopException | FileAlreadyExistsException ex) {
             System.out.println(ex.getMessage());
-        } catch (IOException e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }

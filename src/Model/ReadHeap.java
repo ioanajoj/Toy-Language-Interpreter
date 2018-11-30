@@ -1,6 +1,7 @@
 package Model;
 
 public class ReadHeap extends Expr {
+    // private VarExpr variableName;
     private String variableName;
 
     public ReadHeap(String variableName) {

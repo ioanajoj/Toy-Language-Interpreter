@@ -14,7 +14,7 @@ public class Interpreter {
         ListRepository repo1 = new ListRepository("logfile.txt");
         Controller ctr1 = new Controller(repo1);
         IStmt ex1 = new CompStmt(new AssignStmt("v",new ConstExpr(2)), new PrintStmt(new VarExpr("v")));
-        PrgState prg1 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), ex1);
+        PrgState prg1 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), ex1);
         repo1.addProgram(prg1);
 
         /*
@@ -33,7 +33,7 @@ public class Interpreter {
         CompStmt comp_2_1 = new CompStmt(assign_a, assign_b);
         PrintStmt print_2 = new PrintStmt(new VarExpr("b"));
         IStmt ex2 = new CompStmt(comp_2_1, print_2);
-        PrgState prg2 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), ex2);
+        PrgState prg2 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), ex2);
         repo2.addProgram(prg2);
 
         /*
@@ -48,7 +48,7 @@ public class Interpreter {
         IfStmt if_stmt_3 = new IfStmt(new VarExpr("a"), new AssignStmt("v", new ConstExpr(2)), new AssignStmt("v", new ConstExpr(3)));
         PrintStmt print_stmt_3 = new PrintStmt(new VarExpr("v"));
         IStmt ex3  = new CompStmt(assign_a_3, new CompStmt(if_stmt_3, print_stmt_3));
-        PrgState prg3 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), ex3);
+        PrgState prg3 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), ex3);
         repo3.addProgram(prg3);
 
         /*
@@ -60,7 +60,7 @@ public class Interpreter {
         ListRepository repo4 = new ListRepository("logfile.txt");
         Controller ctr4 = new Controller(repo4);
         IStmt ex4 = new CompStmt(new AssignStmt("v", new ConstExpr(2)), new PrintStmt(new VarExpr("a")));
-        PrgState prg4 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), ex4);
+        PrgState prg4 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), ex4);
         repo4.addProgram(prg4);
 
         /*
@@ -77,7 +77,7 @@ public class Interpreter {
         PrintStmt print_5 = new PrintStmt(new VarExpr("a"));
         CompStmt comp_5_1 = new CompStmt(ass, ass2);
         IStmt ex5 = new CompStmt(comp_5_1, print_5);
-        PrgState prg5 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), ex5);
+        PrgState prg5 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), ex5);
         repo5.addProgram(prg5);
 
         /*
@@ -101,7 +101,7 @@ public class Interpreter {
         CloseFile close = new CloseFile(fileExpr);
         CompStmt comp = new CompStmt(line12, ifStmt);
         IStmt ex6 = new CompStmt(comp, close);
-        PrgState prg6 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), ex6);
+        PrgState prg6 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), ex6);
         repo6.addProgram(prg6);
 
         /*
@@ -125,7 +125,7 @@ public class Interpreter {
         CloseFile close_7 = new CloseFile(fileExpr);
         CompStmt comp_7 = new CompStmt(line12_7, ifStmt_7);
         IStmt ex7 = new CompStmt(comp_7, close_7);
-        PrgState prg7 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), ex7);
+        PrgState prg7 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), ex7);
         repo7.addProgram(prg7);
 
         /*
@@ -142,7 +142,7 @@ public class Interpreter {
         IStmt comp7_1 = new CompStmt(v, newSt);
         IStmt comp7_2 = new CompStmt(newSt2, print8);
         IStmt ex8 = new CompStmt(comp7_1, comp7_2);
-        PrgState prg8 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), ex8);
+        PrgState prg8 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), ex8);
         repo8.addProgram(prg8);
 
         /*
@@ -160,7 +160,7 @@ public class Interpreter {
         IStmt comp9_2 = new CompStmt(comp9_1, newSt2_9);
         IStmt comp9_3 = new CompStmt(print9_1, print9_2);
         IStmt ex9 = new CompStmt(comp9_2, comp9_3);
-        PrgState prg9 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), ex9);
+        PrgState prg9 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), ex9);
         repo9.addProgram(prg9);
 
         /*
@@ -182,7 +182,7 @@ public class Interpreter {
         IStmt comp10_4 = new CompStmt(comp10_3, print10_1);
         IStmt comp10_5 = new CompStmt(print10_2, ass_a_10);
         IStmt ex10 = new CompStmt(comp10_4, comp10_5);
-        PrgState prg10 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), ex10);
+        PrgState prg10 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), ex10);
         repo10.addProgram(prg10);
 
         /*
@@ -193,7 +193,7 @@ public class Interpreter {
         ListRepository repo11 = new ListRepository("logfile.txt");
         Controller ctr11 = new Controller(repo11);
         IStmt ex11 = new CompStmt(new AssignStmt("v",new ArithmExpr('+', new ConstExpr(10), new BooleanExpr(">", new ConstExpr(2), new ConstExpr(6)))), new PrintStmt(new VarExpr("v")));
-        PrgState prg11 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), ex11);
+        PrgState prg11 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), ex11);
         repo11.addProgram(prg11);
 
         /*
@@ -211,7 +211,7 @@ public class Interpreter {
         IStmt whileSt12 = new WhileStmt(new ArithmExpr('-', new VarExpr("v"), new ConstExpr(4)), inWhile12);
         IStmt comp12 = new CompStmt(new AssignStmt("v", new ConstExpr(6)), whileSt12);
         IStmt ex12 = new CompStmt(comp12, new PrintStmt(new VarExpr("v")));
-        PrgState prg12 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), ex12);
+        PrgState prg12 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), ex12);
         repo12.addProgram(prg12);
 
         /*
@@ -224,7 +224,7 @@ public class Interpreter {
         ListRepository repo13 = new ListRepository("logfile.txt");
         Controller ctr13 = new Controller(repo13);
         IStmt ex13 = new WhileStmt(new ConstExpr(6), new PrintStmt(new ConstExpr(3)));
-        PrgState prg13 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), ex13);
+        PrgState prg13 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), ex13);
         repo13.addProgram(prg13);
 
         /*
@@ -237,14 +237,30 @@ public class Interpreter {
         OpenFile open14_1 = new OpenFile("var_f", "test.in");
         OpenFile open14_2 = new OpenFile("var_f2", "test2.in");
         IStmt ex14 = new CompStmt(open14_1, open14_2);
-        PrgState prg14 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), ex14);
+        PrgState prg14 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), ex14);
         repo14.addProgram(prg14);
 
+        /*
+        Example 15 fork
+        v=10;new(a,22);
+        fork(wH(a,30);v=32;print(v);print(rH(a)));
+        print(v);print(rH(a))
+        */
+        ListRepository repo15 = new ListRepository("logfile.txt");
+        Controller ctr15 = new Controller(repo15);
+        CompStmt beginStmt15 = new CompStmt(new AssignStmt("v",new ConstExpr(10)), new NewStmt("a", new ConstExpr(22)));
+        CompStmt child1_15 = new CompStmt(new WriteHeap("a", new ConstExpr(30)), new AssignStmt("v", new ConstExpr(32)));
+        CompStmt child15 = new CompStmt(child1_15, new CompStmt(new PrintStmt(new VarExpr("v")), new PrintStmt(new ReadHeap("a"))));
+        ForkStmt fork15 = new ForkStmt(child15);
+        CompStmt parent15 = new CompStmt(new PrintStmt(new VarExpr("v")), new PrintStmt(new ReadHeap("a")));
+        CompStmt comp1_15 = new CompStmt(beginStmt15, fork15);
+        IStmt ex15 = new CompStmt(comp1_15, parent15);
+        PrgState prg15 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), ex15);
+        repo15.addProgram(prg15);
 
         /* ============================================= */
 
         TextMenu textMenu = new TextMenu();
-        textMenu.addCommand(new ExitCommand("exit", "0"));
         textMenu.addCommand(new RunExampleCommand("1", ex1.toString(), ctr1));
         textMenu.addCommand(new RunExampleCommand("2", ex2.toString(), ctr2));
         textMenu.addCommand(new RunExampleCommand("3", ex3.toString(), ctr3));
@@ -259,6 +275,7 @@ public class Interpreter {
         textMenu.addCommand(new RunExampleCommand("12", ex12.toString(), ctr12));
         textMenu.addCommand(new RunExampleCommand("13", ex13.toString(), ctr13));
         textMenu.addCommand(new RunExampleCommand("14", ex14.toString(), ctr14));
+        textMenu.addCommand(new RunExampleCommand("15", ex15.toString(), ctr15));
         textMenu.show();
     }
 }

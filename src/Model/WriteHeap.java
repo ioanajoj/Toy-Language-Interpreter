@@ -14,7 +14,7 @@ public class WriteHeap implements IStmt {
         Integer address = state.getSymTable().lookUp(variableName);
         Integer value = expression.eval(state.getSymTable(), state.getHeapMemory());
         state.getHeapMemory().replace(address, value);
-        return state;
+        return null;
     }
 
     @Override

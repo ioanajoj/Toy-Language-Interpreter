@@ -10,7 +10,7 @@ public class FileTable implements IDictionaryWithoutKey<Integer, Pair<String, Bu
     private HashMap<Integer, Pair<String, BufferedReader>> fileTable;
     private int descriptor = 1;
 
-    FileTable() {
+    public FileTable() {
         this.fileTable = new HashMap<>();
     }
 

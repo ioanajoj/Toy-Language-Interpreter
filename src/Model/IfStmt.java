@@ -18,7 +18,7 @@ public class IfStmt implements IStmt {
         if(this.expr.eval(symTable,state.getHeapMemory()) != 0)
             exeStack.push(thenS);
         else exeStack.push(elseS);
-        return state;
+        return null;
     }
 
     @Override
