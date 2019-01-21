@@ -2,6 +2,10 @@ package Controller;
 
 import Model.*;
 import Model.Containers.*;
+import Model.Containers.MyDictionary;
+import Model.Containers.MyIDictionary;
+import Model.Containers.MyIList;
+import Model.Containers.MyIStack;
 import Model.Exceptions.DivisionByZeroException;
 import Model.Exceptions.InfiniteLoopException;
 import Model.Exceptions.MissingVariableException;
