@@ -1,0 +1,110 @@
+*=========================*
+
+PROGRAM STATE INDEX: 0
+*=== EXECUTION STACK ===*
+v <- 20
+a <- 22
+writeHeap: a<-30
+print a
+print readHeap: a
+a = 0
+*=== SYMBOL TABLE ===*
+{v=10}
+*=== OUTPUT ===*
+
+*=== FILE TABLE ===*:
+*=== HEAP MEMORY ===*
+{}
+
+*=========================*
+
+PROGRAM STATE INDEX: 0
+*=== EXECUTION STACK ===*
+a <- 22
+writeHeap: a<-30
+print a
+print readHeap: a
+a = 0
+*=== SYMBOL TABLE ===*
+{v=1}
+*=== OUTPUT ===*
+
+*=== FILE TABLE ===*:
+*=== HEAP MEMORY ===*
+{1=20}
+
+*=========================*
+
+PROGRAM STATE INDEX: 0
+*=== EXECUTION STACK ===*
+writeHeap: a<-30
+print a
+print readHeap: a
+a = 0
+*=== SYMBOL TABLE ===*
+{v=1, a=2}
+*=== OUTPUT ===*
+
+*=== FILE TABLE ===*:
+*=== HEAP MEMORY ===*
+{1=20, 2=22}
+
+*=========================*
+
+PROGRAM STATE INDEX: 0
+*=== EXECUTION STACK ===*
+print a
+print readHeap: a
+a = 0
+*=== SYMBOL TABLE ===*
+{v=1, a=2}
+*=== OUTPUT ===*
+
+*=== FILE TABLE ===*:
+*=== HEAP MEMORY ===*
+{1=20, 2=30}
+
+*=========================*
+
+PROGRAM STATE INDEX: 0
+*=== EXECUTION STACK ===*
+print readHeap: a
+a = 0
+*=== SYMBOL TABLE ===*
+{v=1, a=2}
+*=== OUTPUT ===*
+2
+
+*=== FILE TABLE ===*:
+*=== HEAP MEMORY ===*
+{1=20, 2=30}
+
+*=========================*
+
+PROGRAM STATE INDEX: 0
+*=== EXECUTION STACK ===*
+a = 0
+*=== SYMBOL TABLE ===*
+{v=1, a=2}
+*=== OUTPUT ===*
+2
+30
+
+*=== FILE TABLE ===*:
+*=== HEAP MEMORY ===*
+{1=20, 2=30}
+
+*=========================*
+
+PROGRAM STATE INDEX: 0
+*=== EXECUTION STACK ===*
+*=== SYMBOL TABLE ===*
+{v=1, a=0}
+*=== OUTPUT ===*
+2
+30
+
+*=== FILE TABLE ===*:
+*=== HEAP MEMORY ===*
+{1=20}
+
