@@ -93,4 +93,9 @@ public class LockTable implements ILockTable<Integer, Integer> {
         lockTable.forEach((key, value) -> pairs.add(new Pair<>(key, value)));
         return pairs;
     }
+
+    @Override
+    public String toString() {
+        return lockTable.toString();
+    }
 }

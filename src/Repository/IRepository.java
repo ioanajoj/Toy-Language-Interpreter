@@ -1,5 +1,6 @@
 package Repository;
 
+import Model.Containers.Triplet;
 import Model.PrgState;
 import javafx.util.Pair;
 
@@ -10,7 +11,6 @@ import java.util.List;
 public interface IRepository {
     PrgState getCurrentPrg();
     int getCurrentIndex();
-    void addPrgState(PrgState prg);
     void logAll();
     void logPrgState(PrgState prgState);
     void clearFile();
@@ -27,5 +27,6 @@ public interface IRepository {
     ArrayList<Pair<Integer, String>> getFileTablePairs(Integer prgStateIndex);
     ArrayList<Pair<Integer, Integer>> getHeapPairs(Integer prgStateIndex);
     ArrayList<Pair<Integer, Integer>> getLockTableString(Integer prgStateIndex);
+    ArrayList<Triplet<Integer, Integer, String>> getCyclicBarrierAll(Integer prgStateIndex);
     Integer getPrgStateIndex(int name);
 }

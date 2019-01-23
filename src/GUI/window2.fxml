@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -21,8 +22,8 @@
         <Font name="DejaVu Sans Condensed Bold" size="13.0" fx:id="x1" />
       </font>
     </Label>
-    <Label font="$x1" layoutX="371.0" layoutY="306.0" text="Output" />
-    <ListView fx:id="Output" layoutX="371.0" layoutY="328.0" prefHeight="200.0" prefWidth="163.5" />
+    <Label font="$x1" layoutX="580.0" layoutY="303.0" text="Output" />
+    <ListView fx:id="Output" layoutX="580.0" layoutY="328.0" prefHeight="200.0" prefWidth="123.0" />
     <Label font="$x1" layoutX="185.0" layoutY="307.0" text="File Table" />
     <TableView id="fileTable" fx:id="FileTable" layoutX="185.0" layoutY="328.0" prefHeight="200.0" prefWidth="164.0">
       <columns>
@@ -50,5 +51,17 @@
       </columns>
     </TableView>
     <Label font="$x1" layoutX="15.0" layoutY="307.0" text="Lock Table" />
+    <TableView fx:id="CyclicBarrier" layoutX="371.0" layoutY="328.0" prefHeight="200.0" prefWidth="200.0">
+      <columns>
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="63.0" text="Index" fx:id="IndexCyclicBarrier" />
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="67.0" text="Value" fx:id="ValueCyclicBarrier" />
+        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="69.0" text="List" fx:id="ListCyclicBarrier" />
+      </columns>
+    </TableView>
+    <Label layoutX="371.0" layoutY="306.0" text="Cyclic Barrier">
+      <font>
+        <Font name="DejaVu Sans Condensed Bold" size="12.0" />
+      </font>
+    </Label>
   </children>
 </AnchorPane>

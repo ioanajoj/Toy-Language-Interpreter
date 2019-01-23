@@ -2,411 +2,364 @@
 
 PROGRAM STATE INDEX: 0
 *=== EXECUTION STACK ===*
-For(v=0;v<3;v= v + 1) {
+v2 <- 3
+v3 <- 4
+NewBarrier(cnt,readHeap: v2)
 fork() {
-print v
-v = v + 1
+Await(cnt)
+writeHeap: v1<-readHeap: v1 * 10
+print readHeap: v1
 }
+fork() {
+Await(cnt)
+writeHeap: v2<-readHeap: v2 * 10
+writeHeap: v2<-readHeap: v2 * 10
+print readHeap: v2
 }
-print v * 10
+Await(cnt)
+print readHeap: v3
 *=== SYMBOL TABLE ===*
-{v=20}
+{v1=1}
 *=== OUTPUT ===*
-
 *=== FILE TABLE ===*:
 *=== HEAP MEMORY ===*
+{1=2}
+*=== LOCK TABLE ===*
 {}
-
 *=========================*
 
 PROGRAM STATE INDEX: 0
 *=== EXECUTION STACK ===*
-v = 0
-while(v<3) {fork() {
-print v
-v = v + 1
+v3 <- 4
+NewBarrier(cnt,readHeap: v2)
+fork() {
+Await(cnt)
+writeHeap: v1<-readHeap: v1 * 10
+print readHeap: v1
 }
-v = v + 1}
-print v * 10
+fork() {
+Await(cnt)
+writeHeap: v2<-readHeap: v2 * 10
+writeHeap: v2<-readHeap: v2 * 10
+print readHeap: v2
+}
+Await(cnt)
+print readHeap: v3
 *=== SYMBOL TABLE ===*
-{v=20}
+{v1=1, v2=2}
 *=== OUTPUT ===*
-
 *=== FILE TABLE ===*:
 *=== HEAP MEMORY ===*
+{1=2, 2=3}
+*=== LOCK TABLE ===*
 {}
-
 *=========================*
 
 PROGRAM STATE INDEX: 0
 *=== EXECUTION STACK ===*
-while(v<3) {fork() {
-print v
-v = v + 1
+NewBarrier(cnt,readHeap: v2)
+fork() {
+Await(cnt)
+writeHeap: v1<-readHeap: v1 * 10
+print readHeap: v1
 }
-v = v + 1}
-print v * 10
+fork() {
+Await(cnt)
+writeHeap: v2<-readHeap: v2 * 10
+writeHeap: v2<-readHeap: v2 * 10
+print readHeap: v2
+}
+Await(cnt)
+print readHeap: v3
 *=== SYMBOL TABLE ===*
-{v=0}
+{v1=1, v2=2, v3=3}
 *=== OUTPUT ===*
-
 *=== FILE TABLE ===*:
 *=== HEAP MEMORY ===*
+{1=2, 2=3, 3=4}
+*=== LOCK TABLE ===*
 {}
-
 *=========================*
 
 PROGRAM STATE INDEX: 0
 *=== EXECUTION STACK ===*
 fork() {
-print v
-v = v + 1
+Await(cnt)
+writeHeap: v1<-readHeap: v1 * 10
+print readHeap: v1
 }
-v = v + 1
-while(v<3) {fork() {
-print v
-v = v + 1
+fork() {
+Await(cnt)
+writeHeap: v2<-readHeap: v2 * 10
+writeHeap: v2<-readHeap: v2 * 10
+print readHeap: v2
 }
-v = v + 1}
-print v * 10
+Await(cnt)
+print readHeap: v3
 *=== SYMBOL TABLE ===*
-{v=0}
+{v1=1, v2=2, v3=3, cnt=1}
 *=== OUTPUT ===*
-
 *=== FILE TABLE ===*:
 *=== HEAP MEMORY ===*
+{1=2, 2=3, 3=4}
+*=== LOCK TABLE ===*
 {}
-
 *=========================*
 
 PROGRAM STATE INDEX: 0
 *=== EXECUTION STACK ===*
-v = v + 1
-while(v<3) {fork() {
-print v
-v = v + 1
+fork() {
+Await(cnt)
+writeHeap: v2<-readHeap: v2 * 10
+writeHeap: v2<-readHeap: v2 * 10
+print readHeap: v2
 }
-v = v + 1}
-print v * 10
+Await(cnt)
+print readHeap: v3
 *=== SYMBOL TABLE ===*
-{v=0}
+{v1=1, v2=2, v3=3, cnt=1}
 *=== OUTPUT ===*
-
 *=== FILE TABLE ===*:
 *=== HEAP MEMORY ===*
+{1=2, 2=3, 3=4}
+*=== LOCK TABLE ===*
 {}
-
 *=========================*
 
 PROGRAM STATE INDEX: 1
 *=== EXECUTION STACK ===*
-print v
-v = v + 1
+Await(cnt)
+writeHeap: v1<-readHeap: v1 * 10
+print readHeap: v1
 *=== SYMBOL TABLE ===*
-{v=0}
+{v1=1, v2=2, v3=3, cnt=1}
 *=== OUTPUT ===*
-
 *=== FILE TABLE ===*:
 *=== HEAP MEMORY ===*
+{1=2, 2=3, 3=4}
+*=== LOCK TABLE ===*
 {}
-
 *=========================*
 
 PROGRAM STATE INDEX: 0
 *=== EXECUTION STACK ===*
-while(v<3) {fork() {
-print v
-v = v + 1
-}
-v = v + 1}
-print v * 10
+Await(cnt)
+print readHeap: v3
 *=== SYMBOL TABLE ===*
-{v=1}
+{v1=1, v2=2, v3=3, cnt=1}
 *=== OUTPUT ===*
-0
-
 *=== FILE TABLE ===*:
 *=== HEAP MEMORY ===*
+{1=2, 2=3, 3=4}
+*=== LOCK TABLE ===*
 {}
-
 *=========================*
 
 PROGRAM STATE INDEX: 1
 *=== EXECUTION STACK ===*
-v = v + 1
+Await(cnt)
+writeHeap: v1<-readHeap: v1 * 10
+print readHeap: v1
 *=== SYMBOL TABLE ===*
-{v=0}
+{v1=1, v2=2, v3=3, cnt=1}
 *=== OUTPUT ===*
-0
-
 *=== FILE TABLE ===*:
 *=== HEAP MEMORY ===*
+{1=2, 2=3, 3=4}
+*=== LOCK TABLE ===*
 {}
+*=========================*
 
+PROGRAM STATE INDEX: 2
+*=== EXECUTION STACK ===*
+Await(cnt)
+writeHeap: v2<-readHeap: v2 * 10
+writeHeap: v2<-readHeap: v2 * 10
+print readHeap: v2
+*=== SYMBOL TABLE ===*
+{v1=1, v2=2, v3=3, cnt=1}
+*=== OUTPUT ===*
+*=== FILE TABLE ===*:
+*=== HEAP MEMORY ===*
+{1=2, 2=3, 3=4}
+*=== LOCK TABLE ===*
+{}
 *=========================*
 
 PROGRAM STATE INDEX: 0
 *=== EXECUTION STACK ===*
-fork() {
-print v
-v = v + 1
-}
-v = v + 1
-while(v<3) {fork() {
-print v
-v = v + 1
-}
-v = v + 1}
-print v * 10
+Await(cnt)
+print readHeap: v3
 *=== SYMBOL TABLE ===*
-{v=1}
+{v1=1, v2=2, v3=3, cnt=1}
 *=== OUTPUT ===*
-0
+*=== FILE TABLE ===*:
+*=== HEAP MEMORY ===*
+{1=2, 2=3, 3=4}
+*=== LOCK TABLE ===*
+{}
+*=========================*
+
+PROGRAM STATE INDEX: 1
+*=== EXECUTION STACK ===*
+Await(cnt)
+writeHeap: v1<-readHeap: v1 * 10
+print readHeap: v1
+*=== SYMBOL TABLE ===*
+{v1=1, v2=2, v3=3, cnt=1}
+*=== OUTPUT ===*
+*=== FILE TABLE ===*:
+*=== HEAP MEMORY ===*
+{1=2, 2=3, 3=4}
+*=== LOCK TABLE ===*
+{}
+*=========================*
+
+PROGRAM STATE INDEX: 2
+*=== EXECUTION STACK ===*
+Await(cnt)
+writeHeap: v2<-readHeap: v2 * 10
+writeHeap: v2<-readHeap: v2 * 10
+print readHeap: v2
+*=== SYMBOL TABLE ===*
+{v1=1, v2=2, v3=3, cnt=1}
+*=== OUTPUT ===*
+*=== FILE TABLE ===*:
+*=== HEAP MEMORY ===*
+{1=2, 2=3, 3=4}
+*=== LOCK TABLE ===*
+{}
+*=========================*
+
+PROGRAM STATE INDEX: 0
+*=== EXECUTION STACK ===*
+print readHeap: v3
+*=== SYMBOL TABLE ===*
+{v1=1, v2=2, v3=3, cnt=1}
+*=== OUTPUT ===*
+*=== FILE TABLE ===*:
+*=== HEAP MEMORY ===*
+{1=2, 2=3, 3=4}
+*=== LOCK TABLE ===*
+{}
+*=========================*
+
+PROGRAM STATE INDEX: 1
+*=== EXECUTION STACK ===*
+writeHeap: v1<-readHeap: v1 * 10
+print readHeap: v1
+*=== SYMBOL TABLE ===*
+{v1=1, v2=2, v3=3, cnt=1}
+*=== OUTPUT ===*
+*=== FILE TABLE ===*:
+*=== HEAP MEMORY ===*
+{1=2, 2=3, 3=4}
+*=== LOCK TABLE ===*
+{}
+*=========================*
+
+PROGRAM STATE INDEX: 2
+*=== EXECUTION STACK ===*
+writeHeap: v2<-readHeap: v2 * 10
+writeHeap: v2<-readHeap: v2 * 10
+print readHeap: v2
+*=== SYMBOL TABLE ===*
+{v1=1, v2=2, v3=3, cnt=1}
+*=== OUTPUT ===*
+*=== FILE TABLE ===*:
+*=== HEAP MEMORY ===*
+{1=2, 2=3, 3=4}
+*=== LOCK TABLE ===*
+{}
+*=========================*
+
+PROGRAM STATE INDEX: 0
+*=== EXECUTION STACK ===*
+*=== SYMBOL TABLE ===*
+{v1=1, v2=2, v3=3, cnt=1}
+*=== OUTPUT ===*
+4
 
 *=== FILE TABLE ===*:
 *=== HEAP MEMORY ===*
+{1=20, 2=30, 3=4}
+*=== LOCK TABLE ===*
 {}
+*=========================*
 
+PROGRAM STATE INDEX: 1
+*=== EXECUTION STACK ===*
+print readHeap: v1
+*=== SYMBOL TABLE ===*
+{v1=1, v2=2, v3=3, cnt=1}
+*=== OUTPUT ===*
+4
+
+*=== FILE TABLE ===*:
+*=== HEAP MEMORY ===*
+{1=20, 2=30, 3=4}
+*=== LOCK TABLE ===*
+{}
+*=========================*
+
+PROGRAM STATE INDEX: 2
+*=== EXECUTION STACK ===*
+writeHeap: v2<-readHeap: v2 * 10
+print readHeap: v2
+*=== SYMBOL TABLE ===*
+{v1=1, v2=2, v3=3, cnt=1}
+*=== OUTPUT ===*
+4
+
+*=== FILE TABLE ===*:
+*=== HEAP MEMORY ===*
+{1=20, 2=30, 3=4}
+*=== LOCK TABLE ===*
+{}
 *=========================*
 
 PROGRAM STATE INDEX: 1
 *=== EXECUTION STACK ===*
 *=== SYMBOL TABLE ===*
-{v=1}
+{v1=1, v2=2, v3=3, cnt=1}
 *=== OUTPUT ===*
-0
+4
+20
 
 *=== FILE TABLE ===*:
 *=== HEAP MEMORY ===*
+{1=20, 2=300, 3=4}
+*=== LOCK TABLE ===*
 {}
-
-*=========================*
-
-PROGRAM STATE INDEX: 0
-*=== EXECUTION STACK ===*
-v = v + 1
-while(v<3) {fork() {
-print v
-v = v + 1
-}
-v = v + 1}
-print v * 10
-*=== SYMBOL TABLE ===*
-{v=1}
-*=== OUTPUT ===*
-0
-
-*=== FILE TABLE ===*:
-*=== HEAP MEMORY ===*
-{}
-
 *=========================*
 
 PROGRAM STATE INDEX: 2
 *=== EXECUTION STACK ===*
-print v
-v = v + 1
+print readHeap: v2
 *=== SYMBOL TABLE ===*
-{v=1}
+{v1=1, v2=2, v3=3, cnt=1}
 *=== OUTPUT ===*
-0
+4
+20
 
 *=== FILE TABLE ===*:
 *=== HEAP MEMORY ===*
+{1=20, 2=300, 3=4}
+*=== LOCK TABLE ===*
 {}
-
-*=========================*
-
-PROGRAM STATE INDEX: 0
-*=== EXECUTION STACK ===*
-while(v<3) {fork() {
-print v
-v = v + 1
-}
-v = v + 1}
-print v * 10
-*=== SYMBOL TABLE ===*
-{v=2}
-*=== OUTPUT ===*
-0
-1
-
-*=== FILE TABLE ===*:
-*=== HEAP MEMORY ===*
-{}
-
-*=========================*
-
-PROGRAM STATE INDEX: 2
-*=== EXECUTION STACK ===*
-v = v + 1
-*=== SYMBOL TABLE ===*
-{v=1}
-*=== OUTPUT ===*
-0
-1
-
-*=== FILE TABLE ===*:
-*=== HEAP MEMORY ===*
-{}
-
-*=========================*
-
-PROGRAM STATE INDEX: 0
-*=== EXECUTION STACK ===*
-fork() {
-print v
-v = v + 1
-}
-v = v + 1
-while(v<3) {fork() {
-print v
-v = v + 1
-}
-v = v + 1}
-print v * 10
-*=== SYMBOL TABLE ===*
-{v=2}
-*=== OUTPUT ===*
-0
-1
-
-*=== FILE TABLE ===*:
-*=== HEAP MEMORY ===*
-{}
-
 *=========================*
 
 PROGRAM STATE INDEX: 2
 *=== EXECUTION STACK ===*
 *=== SYMBOL TABLE ===*
-{v=2}
+{v1=1, v2=2, v3=3, cnt=1}
 *=== OUTPUT ===*
-0
-1
+4
+20
+300
 
 *=== FILE TABLE ===*:
 *=== HEAP MEMORY ===*
+{1=20, 2=300, 3=4}
+*=== LOCK TABLE ===*
 {}
-
-*=========================*
-
-PROGRAM STATE INDEX: 0
-*=== EXECUTION STACK ===*
-v = v + 1
-while(v<3) {fork() {
-print v
-v = v + 1
-}
-v = v + 1}
-print v * 10
-*=== SYMBOL TABLE ===*
-{v=2}
-*=== OUTPUT ===*
-0
-1
-
-*=== FILE TABLE ===*:
-*=== HEAP MEMORY ===*
-{}
-
-*=========================*
-
-PROGRAM STATE INDEX: 3
-*=== EXECUTION STACK ===*
-print v
-v = v + 1
-*=== SYMBOL TABLE ===*
-{v=2}
-*=== OUTPUT ===*
-0
-1
-
-*=== FILE TABLE ===*:
-*=== HEAP MEMORY ===*
-{}
-
-*=========================*
-
-PROGRAM STATE INDEX: 0
-*=== EXECUTION STACK ===*
-while(v<3) {fork() {
-print v
-v = v + 1
-}
-v = v + 1}
-print v * 10
-*=== SYMBOL TABLE ===*
-{v=3}
-*=== OUTPUT ===*
-0
-1
-2
-
-*=== FILE TABLE ===*:
-*=== HEAP MEMORY ===*
-{}
-
-*=========================*
-
-PROGRAM STATE INDEX: 3
-*=== EXECUTION STACK ===*
-v = v + 1
-*=== SYMBOL TABLE ===*
-{v=2}
-*=== OUTPUT ===*
-0
-1
-2
-
-*=== FILE TABLE ===*:
-*=== HEAP MEMORY ===*
-{}
-
-*=========================*
-
-PROGRAM STATE INDEX: 0
-*=== EXECUTION STACK ===*
-print v * 10
-*=== SYMBOL TABLE ===*
-{v=3}
-*=== OUTPUT ===*
-0
-1
-2
-
-*=== FILE TABLE ===*:
-*=== HEAP MEMORY ===*
-{}
-
-*=========================*
-
-PROGRAM STATE INDEX: 3
-*=== EXECUTION STACK ===*
-*=== SYMBOL TABLE ===*
-{v=3}
-*=== OUTPUT ===*
-0
-1
-2
-
-*=== FILE TABLE ===*:
-*=== HEAP MEMORY ===*
-{}
-
-*=========================*
-
-PROGRAM STATE INDEX: 0
-*=== EXECUTION STACK ===*
-*=== SYMBOL TABLE ===*
-{v=3}
-*=== OUTPUT ===*
-0
-1
-2
-30
-
-*=== FILE TABLE ===*:
-*=== HEAP MEMORY ===*
-{}
-

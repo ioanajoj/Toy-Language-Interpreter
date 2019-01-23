@@ -1,5 +1,6 @@
 package Repository;
 
+import Model.Containers.Triplet;
 import Model.PrgState;
 import javafx.util.Pair;
 
@@ -13,19 +14,18 @@ public class ListRepository implements IRepository {
     private ArrayList<PrgState> programs;
     private String fileName;
     private int index;
-    private int id;
+    private AtomicInteger id;
 
     public ListRepository(String fileName) {
         this.programs = new ArrayList<>();
         this.fileName = fileName;
         this.index = 0;
-        this.id = 0;
+        this.id = new AtomicInteger(0);
     }
 
     public void addProgram(PrgState prg) {
-        prg.setId(id);
+        prg.setId(id.intValue());
         this.programs.add(prg);
-        this.id++;
     }
 
     @Override
@@ -36,11 +36,6 @@ public class ListRepository implements IRepository {
     @Override
     public int getCurrentIndex() {
         return index;
-    }
-
-    @Override
-    public void addPrgState(PrgState prg) {
-        this.programs.add(prg);
     }
 
     @Override
@@ -62,18 +57,25 @@ public class ListRepository implements IRepository {
                 printW.println(prg.getExeStack());
 
             printW.println("*=== SYMBOL TABLE ===*");
-            printW.println(prg.getSymTable());
+            if(!prg.getSymTable().toString().equals(""))
+                printW.println(prg.getSymTable());
 
             printW.println("*=== OUTPUT ===*");
-            printW.println(prg.getOut());
+            if(!prg.getOut().toString().equals(""))
+                printW.println(prg.getOut());
 
             printW.println("*=== FILE TABLE ===*:");
             if(!prg.getFileTable().toString().equals(""))
                 printW.println(prg.getFileTable());
 
             printW.println("*=== HEAP MEMORY ===*") ;
-            printW.println(prg.getHeapMemory());
-            printW.println();
+            if(!prg.getHeapMemory().toString().equals(""))
+                printW.println(prg.getHeapMemory());
+
+            printW.println("*=== LOCK TABLE ===*") ;
+            if(!prg.getLockTable().toString().equals(""))
+                printW.println(prg.getLockTable());
+
             printW.close();
 
         } catch (FileNotFoundException ex) {
@@ -104,7 +106,7 @@ public class ListRepository implements IRepository {
         programs.addAll(newPrograms);
     }
 
-    public int getNewId() { return new AtomicInteger(id++).intValue(); }
+    public int getNewId() { return this.id.incrementAndGet(); }
 
     @Override
     public String getNoProgramStates() {
@@ -153,6 +155,11 @@ public class ListRepository implements IRepository {
     @Override
     public ArrayList<Pair<Integer, Integer>> getLockTableString(Integer prgStateIndex) {
         return programs.get(prgStateIndex).getLockTable().getPairs();
+    }
+
+    @Override
+    public ArrayList<Triplet<Integer, Integer, String>> getCyclicBarrierAll(Integer prgStateIndex) {
+        return programs.get(prgStateIndex).getCyclicBarrier().getGUI();
     }
 
     @Override

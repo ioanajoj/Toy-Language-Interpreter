@@ -21,8 +21,7 @@ public class CompStmt implements IStmt {
     public PrgState execute(PrgState state) throws IOException, MissingVariableException, DivisionByZeroException, InfiniteLoopException {
         MyIStack<IStmt> stack = state.getExeStack();
         stack.push(second);
-        PrgState s = first.execute(state);
-        return s;
+        return first.execute(state);
     }
 
     @Override

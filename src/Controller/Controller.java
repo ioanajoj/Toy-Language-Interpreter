@@ -163,6 +163,7 @@ public class Controller {
 
     public void endEvalGUI() {
         executor.shutdownNow();
+
     }
 
     public void oneStepGUI() {
@@ -253,5 +254,9 @@ public class Controller {
 
     public ArrayList<Pair<Integer, Integer>> getLockTableString(Integer prgStateIndex) {
         return repo.getLockTableString(prgStateIndex);
+    }
+
+    public ArrayList<Triplet<Integer, Integer, String>> getCyclicBarrierAll(Integer prgStateIndex) {
+        return repo.getCyclicBarrierAll(prgStateIndex);
     }
 }

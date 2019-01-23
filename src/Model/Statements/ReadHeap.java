@@ -7,7 +7,6 @@ import Model.Exceptions.MissingVariableException;
 import Model.Expressions.Expr;
 
 public class ReadHeap extends Expr {
-    // private VarExpr variableName;
     private String variableName;
 
     public ReadHeap(String variableName) {

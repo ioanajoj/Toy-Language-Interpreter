@@ -1,7 +1,6 @@
 package Model;
 
 import Model.Containers.*;
-import Model.Containers.FileTable;
 import Model.Containers.MyDictionary;
 import Model.Containers.MyIDictionary;
 import Model.Containers.MyIList;
@@ -14,6 +13,7 @@ import javafx.util.Pair;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.List;
 
 public class PrgState {
     private String name;
@@ -24,25 +24,24 @@ public class PrgState {
     private IFileTable<Integer, Pair<String, BufferedReader>> fileTable;
     private IHeap<Integer, Integer> heapMemory;
     private ILockTable<Integer, Integer> lockTable;
-    private IStmt originalProgram; // copy of the program (duplicate)
+    private ICyclicBarrier<Integer, Pair<Integer, List<Integer>>> cyclicBarrier;
 
-    public PrgState(String name, Model.Containers.MyIStack<IStmt> exeStack, Model.Containers.MyIDictionary<String, Integer> symTable, Model.Containers.MyIList<Integer> out, IFileTable<Integer, Pair<String, BufferedReader>> fileTable, IHeap<Integer, Integer> heapMemory, ILockTable<Integer, Integer> lockTable, IStmt originalProgram) {
+    public PrgState(String name, Model.Containers.MyIStack<IStmt> exeStack, Model.Containers.MyIDictionary<String, Integer> symTable, Model.Containers.MyIList<Integer> out, IFileTable<Integer, Pair<String, BufferedReader>> fileTable, IHeap<Integer, Integer> heapMemory, ILockTable<Integer, Integer> lockTable, ICyclicBarrier<Integer, Pair<Integer, List<Integer>>> cyclicBarrier, IStmt originalProgram) {
         System.out.println("New prg with id = " + id);
         this.name = name;
         this.exeStack = exeStack;
+        this.exeStack.push(originalProgram);
         this.symTable = symTable;
         this.out = out;
-        this.originalProgram = originalProgram;
-        this.exeStack.push(originalProgram);
         this.fileTable = fileTable;
         this.heapMemory = heapMemory;
         this.lockTable = lockTable;
+        this.cyclicBarrier = cyclicBarrier;
     }
 
     public PrgState oneStep() throws IOException, MissingVariableException, DivisionByZeroException, InfiniteLoopException {
         IStmt currentStmt = exeStack.pop();
-        PrgState newPrg = currentStmt.execute(this);
-        return newPrg;
+        return currentStmt.execute(this);
     }
 
     public void closeAllFiles() {
@@ -56,28 +55,9 @@ public class PrgState {
         fileTable.reset();
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public boolean isCompleted() {
         return this.exeStack.isEmpty();
-    }
-
-    void setExeStack(Model.Containers.MyIStack<IStmt> exeStack) {
-        this.exeStack = exeStack;
-    }
-
-    void setSymTable(Model.Containers.MyIDictionary<String, Integer> symTable) {
-        this.symTable = symTable;
-    }
-
-    public void setOut(Model.Containers.MyIList<Integer> out) {
-        this.out = out;
-    }
-
-    public void setOriginalProgram(IStmt originalProgram) {
-        this.originalProgram = originalProgram;
-    }
-
-    public void setFileTable(FileTable fileTable) {
-        this.fileTable = fileTable;
     }
 
     public MyIStack<IStmt> getExeStack() {
@@ -102,10 +82,6 @@ public class PrgState {
 
     public IHeap<Integer, Integer> getHeapMemory() { return heapMemory; }
 
-    public IStmt getOriginalProgram() {
-        return originalProgram;
-    }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -119,4 +95,6 @@ public class PrgState {
     public ILockTable<Integer, Integer> getLockTable() {
         return lockTable;
     }
+
+    public ICyclicBarrier<Integer, Pair<Integer, List<Integer>>> getCyclicBarrier() { return cyclicBarrier; }
 }

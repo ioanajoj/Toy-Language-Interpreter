@@ -1,6 +1,7 @@
 package GUI;
 
 import Controller.Controller;
+import Model.Containers.Triplet;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -22,6 +23,10 @@ public class ControllerWindow2 {
     @FXML private TableView<Pair<Integer, String>> FileTable;
     @FXML private TableView<Pair<Integer, Integer>> HeappMemory;
     @FXML private TableView<Pair<Integer, Integer>> LockTable;
+    @FXML private TableView<Triplet<Integer, Integer, String>> CyclicBarrier;
+    @FXML private TableColumn<Triplet<Integer, Integer, String>, Integer> IndexCyclicBarrier;
+    @FXML private TableColumn<Triplet<Integer, Integer, String>, Integer> ValueCyclicBarrier;
+    @FXML private TableColumn<Triplet<Integer, Integer, String>, String> ListCyclicBarrier;
     @FXML private TableColumn<Pair<String, Integer>, String> IDLockTable;
     @FXML private TableColumn<Pair<String, Integer>, String> PrgStateIDLockTable;
     @FXML private TableColumn<Pair<String, Integer>, String> VarNameSymbolTable;
@@ -50,6 +55,11 @@ public class ControllerWindow2 {
 
         IDLockTable.setCellValueFactory(new PropertyValueFactory<>("key"));
         PrgStateIDLockTable.setCellValueFactory(new PropertyValueFactory<>("value"));
+
+        /* Cyclic barrier stuff */
+        IndexCyclicBarrier.setCellValueFactory(new PropertyValueFactory<>("first"));
+        ValueCyclicBarrier.setCellValueFactory(new PropertyValueFactory<>("second"));
+        ListCyclicBarrier.setCellValueFactory(new PropertyValueFactory<>("third"));
 
         // set handler for one step button
         OneStepButton.setOnAction(event -> oneStepHandler());
@@ -123,6 +133,10 @@ public class ControllerWindow2 {
             ObservableList<Pair<Integer, Integer>> lockTablee = FXCollections.observableArrayList(lockTable);
             LockTable.setItems(lockTablee);
 
+            /* Cyclic Barrier */
+            ArrayList<Triplet<Integer, Integer, String>> cyclicBarrier = prg_controller.getCyclicBarrierAll(prgStateIndex);
+            ObservableList<Triplet<Integer,Integer,String>> cyclicBarrierr = FXCollections.observableArrayList(cyclicBarrier);
+            CyclicBarrier.setItems(cyclicBarrierr);
         }
         else {
             prg_controller.endEvalGUI();
@@ -131,6 +145,8 @@ public class ControllerWindow2 {
             SymbolTable.getItems().clear();
             HeappMemory.getItems().clear();
             FileTable.getItems().clear();
+            LockTable.getItems().clear();
+            CyclicBarrier.getItems().clear();
         }
     }
 

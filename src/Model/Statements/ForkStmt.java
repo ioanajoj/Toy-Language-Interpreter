@@ -12,7 +12,7 @@ public class ForkStmt implements IStmt {
 
     @Override
     public PrgState execute(PrgState state) {
-        return new PrgState("A child was born", new MyStack<>(), state.getSymTableCopy(), state.getOut(), state.getFileTable(), state.getHeapMemory(), state.getLockTable(), inForkStmt);
+        return new PrgState("A child was born", new MyStack<>(), state.getSymTableCopy(), state.getOut(), state.getFileTable(), state.getHeapMemory(), state.getLockTable(), state.getCyclicBarrier(), inForkStmt);
     }
 
     @Override

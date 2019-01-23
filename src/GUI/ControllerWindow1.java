@@ -49,7 +49,7 @@ public class ControllerWindow1 {
         ListRepository repo1 = new ListRepository("logfile.txt");
         Controller ctr1 = new Controller(repo1);
         IStmt ex1 = new CompStmt(new AssignStmt("v",new ConstExpr(2)), new PrintStmt(new VarExpr("v")));
-        PrgState prg1 = new PrgState("Example 1", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), ex1);
+        PrgState prg1 = new PrgState("Example 1", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), new CyclicBarrier(), ex1);
         repo1.addProgram(prg1);
 
         /*
@@ -68,7 +68,7 @@ public class ControllerWindow1 {
         CompStmt comp_2_1 = new CompStmt(assign_a, assign_b);
         PrintStmt print_2 = new PrintStmt(new VarExpr("b"));
         IStmt ex2 = new CompStmt(comp_2_1, print_2);
-        PrgState prg2 = new PrgState("Example 2", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), ex2);
+        PrgState prg2 = new PrgState("Example 2", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), new CyclicBarrier(), ex2);
         repo2.addProgram(prg2);
 
         /*
@@ -83,7 +83,7 @@ public class ControllerWindow1 {
         IfStmt if_stmt_3 = new IfStmt(new VarExpr("a"), new AssignStmt("v", new ConstExpr(2)), new AssignStmt("v", new ConstExpr(3)));
         PrintStmt print_stmt_3 = new PrintStmt(new VarExpr("v"));
         IStmt ex3  = new CompStmt(assign_a_3, new CompStmt(if_stmt_3, print_stmt_3));
-        PrgState prg3 = new PrgState("Example 3", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), ex3);
+        PrgState prg3 = new PrgState("Example 3", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), new CyclicBarrier(), ex3);
         repo3.addProgram(prg3);
 
         /*
@@ -95,7 +95,7 @@ public class ControllerWindow1 {
         ListRepository repo4 = new ListRepository("logfile.txt");
         Controller ctr4 = new Controller(repo4);
         IStmt ex4 = new CompStmt(new AssignStmt("v", new ConstExpr(2)), new PrintStmt(new VarExpr("a")));
-        PrgState prg4 = new PrgState("Missing Variable Exception", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), ex4);
+        PrgState prg4 = new PrgState("Missing Variable Exception", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), new CyclicBarrier(), ex4);
         repo4.addProgram(prg4);
 
         /*
@@ -112,7 +112,7 @@ public class ControllerWindow1 {
         PrintStmt print_5 = new PrintStmt(new VarExpr("a"));
         CompStmt comp_5_1 = new CompStmt(ass, ass2);
         IStmt ex5 = new CompStmt(comp_5_1, print_5);
-        PrgState prg5 = new PrgState("Division By Zero Exception", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), ex5);
+        PrgState prg5 = new PrgState("Division By Zero Exception", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), new CyclicBarrier(), ex5);
         repo5.addProgram(prg5);
 
         /*
@@ -136,7 +136,7 @@ public class ControllerWindow1 {
         CloseFile close = new CloseFile(fileExpr);
         CompStmt comp = new CompStmt(line12, ifStmt);
         IStmt ex6 = new CompStmt(comp, close);
-        PrgState prg6 = new PrgState("Files Example", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), ex6);
+        PrgState prg6 = new PrgState("Files Example", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), new CyclicBarrier(), ex6);
         repo6.addProgram(prg6);
 
         /*
@@ -160,7 +160,7 @@ public class ControllerWindow1 {
         CloseFile close_7 = new CloseFile(fileExpr7);
         CompStmt comp_7 = new CompStmt(line12_7, ifStmt_7);
         IStmt ex7 = new CompStmt(comp_7, close_7);
-        PrgState prg7 = new PrgState("File Not Found Example", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), ex7);
+        PrgState prg7 = new PrgState("File Not Found Example", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), new CyclicBarrier(), ex7);
         repo7.addProgram(prg7);
 
         /*
@@ -177,7 +177,7 @@ public class ControllerWindow1 {
         IStmt comp7_1 = new CompStmt(v, newSt);
         IStmt comp7_2 = new CompStmt(newSt2, print8);
         IStmt ex8 = new CompStmt(comp7_1, comp7_2);
-        PrgState prg8 = new PrgState("New Command Example", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), ex8);
+        PrgState prg8 = new PrgState("New Command Example", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), new CyclicBarrier(), ex8);
         repo8.addProgram(prg8);
 
         /*
@@ -195,7 +195,7 @@ public class ControllerWindow1 {
         IStmt comp9_2 = new CompStmt(comp9_1, newSt2_9);
         IStmt comp9_3 = new CompStmt(print9_1, print9_2);
         IStmt ex9 = new CompStmt(comp9_2, comp9_3);
-        PrgState prg9 = new PrgState("New Command Example 2", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), ex9);
+        PrgState prg9 = new PrgState("New Command Example 2", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), new CyclicBarrier(), ex9);
         repo9.addProgram(prg9);
 
         /*
@@ -217,7 +217,7 @@ public class ControllerWindow1 {
         IStmt comp10_4 = new CompStmt(comp10_3, print10_1);
         IStmt comp10_5 = new CompStmt(print10_2, ass_a_10);
         IStmt ex10 = new CompStmt(comp10_4, comp10_5);
-        PrgState prg10 = new PrgState("New Command Example 3", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), ex10);
+        PrgState prg10 = new PrgState("New Command Example 3", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), new CyclicBarrier(), ex10);
         repo10.addProgram(prg10);
 
         /*
@@ -228,7 +228,7 @@ public class ControllerWindow1 {
         ListRepository repo11 = new ListRepository("logfile.txt");
         Controller ctr11 = new Controller(repo11);
         IStmt ex11 = new CompStmt(new AssignStmt("v",new ArithmExpr('+', new ConstExpr(10), new BooleanExpr(">", new ConstExpr(2), new ConstExpr(6)))), new PrintStmt(new VarExpr("v")));
-        PrgState prg11 = new PrgState("Comparison Expression Example", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), ex11);
+        PrgState prg11 = new PrgState("Comparison Expression Example", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), new CyclicBarrier(), ex11);
         repo11.addProgram(prg11);
 
         /*
@@ -246,7 +246,7 @@ public class ControllerWindow1 {
         IStmt whileSt12 = new WhileStmt(new ArithmExpr('-', new VarExpr("v"), new ConstExpr(4)), inWhile12);
         IStmt comp12 = new CompStmt(new AssignStmt("v", new ConstExpr(6)), whileSt12);
         IStmt ex12 = new CompStmt(comp12, new PrintStmt(new VarExpr("v")));
-        PrgState prg12 = new PrgState("While Example", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), ex12);
+        PrgState prg12 = new PrgState("While Example", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), new CyclicBarrier(), ex12);
         repo12.addProgram(prg12);
 
         /*
@@ -259,7 +259,7 @@ public class ControllerWindow1 {
         ListRepository repo13 = new ListRepository("logfile.txt");
         Controller ctr13 = new Controller(repo13);
         IStmt ex13 = new WhileStmt(new ConstExpr(6), new PrintStmt(new ConstExpr(3)));
-        PrgState prg13 = new PrgState("Infinite Loop Exception", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), ex13);
+        PrgState prg13 = new PrgState("Infinite Loop Exception", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), new CyclicBarrier(), ex13);
         repo13.addProgram(prg13);
 
         /*
@@ -272,7 +272,7 @@ public class ControllerWindow1 {
         OpenFile open14_1 = new OpenFile("var_f", "test.in");
         OpenFile open14_2 = new OpenFile("var_f2", "test2.in");
         IStmt ex14 = new CompStmt(open14_1, open14_2);
-        PrgState prg14 = new PrgState("Open File Example", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), ex14);
+        PrgState prg14 = new PrgState("Open File Example", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), new CyclicBarrier(), ex14);
         repo14.addProgram(prg14);
 
         /*
@@ -290,7 +290,7 @@ public class ControllerWindow1 {
         CompStmt parent15 = new CompStmt(new PrintStmt(new VarExpr("v")), new PrintStmt(new ReadHeap("a")));
         CompStmt comp1_15 = new CompStmt(beginStmt15, fork15);
         IStmt ex15 = new CompStmt(comp1_15, parent15);
-        PrgState prg15 = new PrgState("Fork Example", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), ex15);
+        PrgState prg15 = new PrgState("Fork Example", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), new CyclicBarrier(), ex15);
         repo15.addProgram(prg15);
 
         /*
@@ -308,11 +308,10 @@ public class ControllerWindow1 {
         CompStmt parent16 = new CompStmt(new PrintStmt(new VarExpr("v")), new PrintStmt(new ReadHeap("a")));
         CompStmt comp1_16 = new CompStmt(beginStmt16, fork16);
         IStmt ex16 = new CompStmt(comp1_16, parent16);
-        PrgState prg16 = new PrgState("Fork Example 2", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), ex16);
+        PrgState prg16 = new PrgState("Fork Example 2", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), new CyclicBarrier(), ex16);
         repo16.addProgram(prg16);
 
-        /* Example minune
-
+        /* Examplu minune
         */
         ListRepository repo17 = new ListRepository("logfile.txt");
         Controller ctr17 = new Controller(repo17);
@@ -392,7 +391,7 @@ public class ControllerWindow1 {
         CompStmt comp_unlock_q = new CompStmt(comp_lock_y, unlock_q_3);
 
         IStmt ex17 = new CompStmt(comp_17_15, comp_unlock_q);
-        PrgState prg17 = new PrgState("Lock Example", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), ex17);
+        PrgState prg17 = new PrgState("Lock Example", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), new CyclicBarrier(), ex17);
         repo17.addProgram(prg17);
 
         /* Example 18
@@ -416,9 +415,81 @@ public class ControllerWindow1 {
         CompStmt comp_18_1 = new CompStmt(assign_v_18, forr);
         IStmt ex18 = new CompStmt(comp_18_1, print_18);
 
-        PrgState prg18 = new PrgState("For Example", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), ex18);
+        PrgState prg18 = new PrgState("For Example", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), new CyclicBarrier(), ex18);
         repo18.addProgram(prg18);
 
+        /*
+        Example Cyclic Barrier 19
+        new(v1,2);new(v2,3);new(v3,4);newBarrier(cnt,rH(v2));
+        fork(await(cnt);wh(v1,rh(v1)*10));print(rh(v1)));
+        fork(await(cnt);wh(v2,rh(v2)*10));wh(v2,rh(v2)*10));print(rh(v2)));
+        await(cnt);
+        print(rH(v3))
+         */
+        ListRepository repo19 = new ListRepository("logfile.txt");
+        Controller ctr19 = new Controller(repo19);
+
+        NewStmt new_19_1 = new NewStmt("v1", new ConstExpr(2));
+        NewStmt new_19_2 = new NewStmt("v2", new ConstExpr(3));
+        NewStmt new_19_3 = new NewStmt("v3", new ConstExpr(4));
+        NewBarrier new_b_19 = new NewBarrier("cnt", new ReadHeap("v2"));
+
+        Await await_19_1 = new Await("cnt");
+        WriteHeap writeHeap_19_1 = new WriteHeap("v1", new ArithmExpr('*', new ReadHeap("v1"), new ConstExpr(10)));
+        PrintStmt print_19_1 = new PrintStmt(new ReadHeap("v1"));
+        CompStmt comp_19_fork_1 = new CompStmt(await_19_1, writeHeap_19_1);
+        ForkStmt fork_19_1 = new ForkStmt(new CompStmt(comp_19_fork_1, print_19_1));
+
+        Await await_19_2 = new Await("cnt");
+        WriteHeap writeHeap_19_2 = new WriteHeap("v2", new ArithmExpr('*', new ReadHeap("v2"), new ConstExpr(10)));
+        WriteHeap writeHeap_19_3 = new WriteHeap("v2", new ArithmExpr('*', new ReadHeap("v2"), new ConstExpr(10)));
+        PrintStmt print_19_2 = new PrintStmt(new ReadHeap("v2"));
+        CompStmt comp_19_fork_2 = new CompStmt(await_19_2, writeHeap_19_2);
+        CompStmt comp_19_fork_3 = new CompStmt(comp_19_fork_2, writeHeap_19_3);
+        ForkStmt fork_19_2 = new ForkStmt(new CompStmt(comp_19_fork_3, print_19_2));
+
+        Await await_19_3 = new Await("cnt");
+        PrintStmt print_19_3 = new PrintStmt(new ReadHeap("v3"));
+
+        CompStmt comp_19_1 = new CompStmt(new_19_1, new_19_2);
+        CompStmt comp_19_2 = new CompStmt(new_19_3, new_b_19);
+        CompStmt comp_19_3 = new CompStmt(comp_19_1, comp_19_2);
+        CompStmt comp_19_4 = new CompStmt(fork_19_1, fork_19_2);
+        CompStmt comp_19_5 = new CompStmt(comp_19_3, comp_19_4);
+        CompStmt comp_19_6 = new CompStmt(comp_19_5, await_19_3);
+        IStmt ex19 = new CompStmt(comp_19_6, print_19_3);
+
+        PrgState prg19 = new PrgState("Cyclic Barrier Example", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), new CyclicBarrier(), ex19);
+        repo19.addProgram(prg19);
+
+        /*
+        a=1;b=2;c=5;
+        switch(a*10)
+         (case (b*c) print(a);print(b))
+         (case (10) print(100);print(200))
+         (default print(300));
+        print(300)
+         */
+        ListRepository repo20 = new ListRepository("logfile.txt");
+        Controller ctr20 = new Controller(repo20);
+        AssignStmt a_20_1 = new AssignStmt("a", new ConstExpr(1));
+        AssignStmt a_20_2 = new AssignStmt("b", new ConstExpr(2));
+        AssignStmt a_20_3 = new AssignStmt("c", new ConstExpr(5));
+        Expr expr_1 = new ArithmExpr('*', new VarExpr("a"), new ConstExpr(10));
+        Expr expr_2 = new ArithmExpr('*', new VarExpr("b"), new VarExpr("c"));
+        Expr expr_3 = new ConstExpr(10);
+        IStmt stmt_1 = new CompStmt(new PrintStmt(new VarExpr("a")), new PrintStmt(new VarExpr("b")));
+        IStmt stmt_2 = new CompStmt(new PrintStmt(new ConstExpr(100)), new PrintStmt(new ConstExpr(200)));
+        IStmt stmt_3 = new PrintStmt(new ConstExpr(300));
+        Switch switch_20 = new Switch(expr_1, expr_2, stmt_1, expr_3, stmt_2, stmt_3);
+        PrintStmt print_20 = new PrintStmt(new ConstExpr(300));
+
+        CompStmt comp_20_1 = new CompStmt(a_20_1, a_20_2);
+        CompStmt comp_20_2 = new CompStmt(a_20_3, switch_20);
+        CompStmt comp_20_3 = new CompStmt(comp_20_1, comp_20_2);
+        IStmt ex20 = new CompStmt(comp_20_3, print_20);
+        PrgState prg20 = new PrgState("Switch Example", new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), new LockTable(), new CyclicBarrier(), ex20);
+        repo20.addProgram(prg20);
 
         menu.addCommand(new RunExampleCommand(prg1.getName(), ex1.toString(), ctr1));
         menu.addCommand(new RunExampleCommand(prg2.getName(), ex2.toString(), ctr2));
@@ -438,6 +509,8 @@ public class ControllerWindow1 {
         menu.addCommand(new RunExampleCommand(prg16.getName(), ex16.toString(), ctr16));
         menu.addCommand(new RunExampleCommand(prg17.getName(), ex17.toString(), ctr17));
         menu.addCommand(new RunExampleCommand(prg18.getName(), ex18.toString(), ctr18));
+        menu.addCommand(new RunExampleCommand(prg19.getName(), ex19.toString(), ctr19));
+        menu.addCommand(new RunExampleCommand(prg20.getName(), ex20.toString(), ctr20));
 
         stringSet.addAll(menu.getDescriptions());
 
@@ -450,7 +523,7 @@ public class ControllerWindow1 {
     }
 
     private void exampleChanged(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-        String newText = newValue == null ? "null" : newValue.toString();
+        String newText = newValue == null ? "null" : newValue;
         String newDescription = menu.getCommand(newText).getDescription();
         code_textArea.setText(newDescription);
         prg_controller = menu.getCommand(newText).getController();
@@ -471,6 +544,9 @@ public class ControllerWindow1 {
                 stage.setTitle("Program Viewer");
                 stage.setScene(new Scene(root, 730, 600));
                 stage.show();
+
+                // set close handler
+                stage.setOnCloseRequest(event -> prg_controller.endEvalGUI());
             } catch (IOException e) {
                 e.printStackTrace();
             }

@@ -7,7 +7,7 @@ public class RunExampleCommand {
     private Controller controller;
     private String description;
 
-    public RunExampleCommand(String name, String description, Controller controller) {
+    RunExampleCommand(String name, String description, Controller controller) {
         this.name = name;
         this.description = description;
         this.controller = controller;
@@ -21,9 +21,9 @@ public class RunExampleCommand {
         }
     }
 
-    public String getName() { return name; }
-    public String getDescription() {
+    String getName() { return name; }
+    String getDescription() {
         return this.description;
     }
-    public Controller getController() { return this.controller; }
+    Controller getController() { return this.controller; }
 }
