@@ -9,10 +9,10 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Set;
 
-public class MyDictionary<Key, Value> implements MyIDictionary<Key, Value> {
+public class MDictionary<Key, Value> implements IDictionary<Key, Value> {
     private LinkedHashMap<Key, Value> dictionary;
 
-    public MyDictionary() {
+    public MDictionary() {
         dictionary = new LinkedHashMap<>();
     }
 

@@ -3,7 +3,7 @@ package Model.Expressions;
 import Model.Exceptions.DivisionByZeroException;
 import Model.Containers.IHeap;
 import Model.Exceptions.MissingVariableException;
-import Model.Containers.MyIDictionary;
+import Model.Containers.IDictionary;
 
 public class BooleanExpr extends Expr {
     private String operator;
@@ -17,7 +17,7 @@ public class BooleanExpr extends Expr {
     }
 
     @Override
-    public int eval(MyIDictionary<String, Integer> table, IHeap<Integer, Integer> heapMemory) throws MissingVariableException, DivisionByZeroException {
+    public int eval(IDictionary<String, Integer> table, IHeap<Integer, Integer> heapMemory) throws MissingVariableException, DivisionByZeroException {
         boolean result = false;
         if(operator.equals("<"))
             result = left.eval(table, heapMemory)<right.eval(table, heapMemory);

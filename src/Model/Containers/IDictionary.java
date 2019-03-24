@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
 
-public interface MyIDictionary<Key, Value> {
+public interface IDictionary<Key, Value> {
     Value lookUp(Key k) throws MissingVariableException;
     Value get(Key k);
     void put(Key k, Value v);

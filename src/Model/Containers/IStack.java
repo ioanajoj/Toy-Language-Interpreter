@@ -2,7 +2,7 @@ package Model.Containers;
 
 import java.util.EmptyStackException;
 
-public interface MyIStack<T> {
+public interface IStack<T> {
     T pop() throws EmptyStackException;
     T top() throws EmptyStackException;
     void push(T elem);

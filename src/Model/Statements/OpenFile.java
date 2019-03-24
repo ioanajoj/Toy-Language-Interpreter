@@ -1,7 +1,7 @@
 package Model.Statements;
 
 import Model.Containers.IFileTable;
-import Model.Containers.MyIDictionary;
+import Model.Containers.IDictionary;
 import Model.PrgState;
 import javafx.util.Pair;
 
@@ -30,7 +30,7 @@ public class OpenFile implements IStmt {
 
         BufferedReader bufferR = new BufferedReader(new FileReader(fileName));
         Integer newDesc = fileTable.put(new Pair<>(fileName, bufferR));
-        MyIDictionary<String, Integer> symTable = state.getSymTable();
+        IDictionary<String, Integer> symTable = state.getSymTable();
         symTable.put(varFile, newDesc);
 
         return null;

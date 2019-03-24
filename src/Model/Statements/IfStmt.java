@@ -1,8 +1,8 @@
 package Model.Statements;
 
 import Model.*;
-import Model.Containers.MyIDictionary;
-import Model.Containers.MyIStack;
+import Model.Containers.IDictionary;
+import Model.Containers.IStack;
 import Model.Exceptions.DivisionByZeroException;
 import Model.Exceptions.MissingVariableException;
 import Model.Expressions.Expr;
@@ -20,8 +20,8 @@ public class IfStmt implements IStmt {
 
     @Override
     public PrgState execute(PrgState state) throws MissingVariableException, DivisionByZeroException {
-        MyIDictionary<String, Integer> symTable = state.getSymTable();
-        MyIStack<IStmt> exeStack = state.getExeStack();
+        IDictionary<String, Integer> symTable = state.getSymTable();
+        IStack<IStmt> exeStack = state.getExeStack();
         if(this.expr.eval(symTable,state.getHeapMemory()) != 0)
             exeStack.push(thenS);
         else exeStack.push(elseS);

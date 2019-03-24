@@ -1,7 +1,7 @@
 package Model.Statements;
 
 import Model.*;
-import Model.Containers.MyStack;
+import Model.Containers.MStack;
 
 public class ForkStmt implements IStmt {
     private IStmt inForkStmt;
@@ -12,7 +12,7 @@ public class ForkStmt implements IStmt {
 
     @Override
     public PrgState execute(PrgState state) {
-        return new PrgState("A child was born", new MyStack<>(), state.getSymTableCopy(), state.getOut(), state.getFileTable(), state.getHeapMemory(), state.getLockTable(), state.getCyclicBarrier(), inForkStmt);
+        return new PrgState("A child was born", new MStack<>(), state.getSymTableCopy(), state.getOut(), state.getFileTable(), state.getHeapMemory(), state.getLockTable(), state.getCyclicBarrier(), inForkStmt);
     }
 
     @Override

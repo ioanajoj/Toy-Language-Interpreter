@@ -3,10 +3,10 @@ package Model.Containers;
 import java.util.ArrayList;
 import java.util.EmptyStackException;
 
-public class MyStack<T> implements MyIStack<T> {
+public class MStack<T> implements IStack<T> {
     private ArrayList<T> stack;
 
-    public MyStack() {
+    public MStack() {
         this.stack = new ArrayList<>();
     }
 

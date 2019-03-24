@@ -1,7 +1,7 @@
 package Model.Expressions;
 
+import Model.Containers.IDictionary;
 import Model.Containers.IHeap;
-import Model.Containers.MyIDictionary;
 
 public class ConstExpr extends Expr {
     private int number;
@@ -11,7 +11,7 @@ public class ConstExpr extends Expr {
     }
 
     @Override
-    public int eval(MyIDictionary<String, Integer> table, IHeap<Integer, Integer> heapMemory) {
+    public int eval(IDictionary<String, Integer> table, IHeap<Integer, Integer> heapMemory) {
         return number;
     }
 

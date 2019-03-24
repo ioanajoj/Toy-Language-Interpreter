@@ -4,10 +4,10 @@ import Model.Exceptions.InvalidIndexException;
 
 import java.util.ArrayList;
 
-public class MyList<T> implements MyIList<T> {
+public class MList<T> implements IList<T> {
     private ArrayList<T> list;
 
-    public MyList() { list = new ArrayList<>(); }
+    public MList() { list = new ArrayList<>(); }
 
     @Override
     public void add(T elem) { list.add(elem); }

@@ -1,7 +1,7 @@
 package Model.Statements;
 
 import Model.*;
-import Model.Containers.MyIStack;
+import Model.Containers.IStack;
 import Model.Exceptions.DivisionByZeroException;
 import Model.Exceptions.InfiniteLoopException;
 import Model.Exceptions.MissingVariableException;
@@ -19,7 +19,7 @@ public class CompStmt implements IStmt {
 
     @Override
     public PrgState execute(PrgState state) throws IOException, MissingVariableException, DivisionByZeroException, InfiniteLoopException {
-        MyIStack<IStmt> stack = state.getExeStack();
+        IStack<IStmt> stack = state.getExeStack();
         stack.push(second);
         return first.execute(state);
     }

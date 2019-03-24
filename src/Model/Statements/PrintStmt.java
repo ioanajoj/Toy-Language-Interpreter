@@ -1,7 +1,7 @@
 package Model.Statements;
 
 import Model.*;
-import Model.Containers.MyIList;
+import Model.Containers.IList;
 import Model.Exceptions.DivisionByZeroException;
 import Model.Exceptions.MissingVariableException;
 import Model.Expressions.Expr;
@@ -15,7 +15,7 @@ public class PrintStmt implements IStmt {
 
     @Override
     public PrgState execute(PrgState state) throws MissingVariableException, DivisionByZeroException {
-        MyIList<Integer> output = state.getOut();
+        IList<Integer> output = state.getOut();
         output.add(expr.eval(state.getSymTable(), state.getHeapMemory()));
         return null;
     }

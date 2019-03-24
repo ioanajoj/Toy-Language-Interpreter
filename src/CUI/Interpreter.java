@@ -21,7 +21,7 @@
 //        ListRepository repo1 = new ListRepository("logfile.txt");
 //        Controller ctr1 = new Controller(repo1);
 //        IStmt ex1 = new CompStmt(new AssignStmt("v",new ConstExpr(2)), new PrintStmt(new VarExpr("v")));
-//        PrgState prg1 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), ex1);
+//        PrgState prg1 = new PrgState(new MStack<>(), new MDictionary<>(), new MList<>(), new FileTable(), new Heap(), ex1);
 //        repo1.addProgram(prg1);
 //
 //        /*
@@ -40,7 +40,7 @@
 //        CompStmt comp_2_1 = new CompStmt(assign_a, assign_b);
 //        PrintStmt print_2 = new PrintStmt(new VarExpr("b"));
 //        IStmt ex2 = new CompStmt(comp_2_1, print_2);
-//        PrgState prg2 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), ex2);
+//        PrgState prg2 = new PrgState(new MStack<>(), new MDictionary<>(), new MList<>(), new FileTable(), new Heap(), ex2);
 //        repo2.addProgram(prg2);
 //
 //        /*
@@ -55,7 +55,7 @@
 //        IfStmt if_stmt_3 = new IfStmt(new VarExpr("a"), new AssignStmt("v", new ConstExpr(2)), new AssignStmt("v", new ConstExpr(3)));
 //        PrintStmt print_stmt_3 = new PrintStmt(new VarExpr("v"));
 //        IStmt ex3  = new CompStmt(assign_a_3, new CompStmt(if_stmt_3, print_stmt_3));
-//        PrgState prg3 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), ex3);
+//        PrgState prg3 = new PrgState(new MStack<>(), new MDictionary<>(), new MList<>(), new FileTable(), new Heap(), ex3);
 //        repo3.addProgram(prg3);
 //
 //        /*
@@ -67,7 +67,7 @@
 //        ListRepository repo4 = new ListRepository("logfile.txt");
 //        Controller ctr4 = new Controller(repo4);
 //        IStmt ex4 = new CompStmt(new AssignStmt("v", new ConstExpr(2)), new PrintStmt(new VarExpr("a")));
-//        PrgState prg4 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), ex4);
+//        PrgState prg4 = new PrgState(new MStack<>(), new MDictionary<>(), new MList<>(), new FileTable(), new Heap(), ex4);
 //        repo4.addProgram(prg4);
 //
 //        /*
@@ -84,7 +84,7 @@
 //        PrintStmt print_5 = new PrintStmt(new VarExpr("a"));
 //        CompStmt comp_5_1 = new CompStmt(ass, ass2);
 //        IStmt ex5 = new CompStmt(comp_5_1, print_5);
-//        PrgState prg5 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), ex5);
+//        PrgState prg5 = new PrgState(new MStack<>(), new MDictionary<>(), new MList<>(), new FileTable(), new Heap(), ex5);
 //        repo5.addProgram(prg5);
 //
 //        /*
@@ -108,7 +108,7 @@
 //        CloseFile close = new CloseFile(fileExpr);
 //        CompStmt comp = new CompStmt(line12, ifStmt);
 //        IStmt ex6 = new CompStmt(comp, close);
-//        PrgState prg6 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), ex6);
+//        PrgState prg6 = new PrgState(new MStack<>(), new MDictionary<>(), new MList<>(), new FileTable(), new Heap(), ex6);
 //        repo6.addProgram(prg6);
 //
 //        /*
@@ -132,7 +132,7 @@
 //        CloseFile close_7 = new CloseFile(fileExpr);
 //        CompStmt comp_7 = new CompStmt(line12_7, ifStmt_7);
 //        IStmt ex7 = new CompStmt(comp_7, close_7);
-//        PrgState prg7 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), ex7);
+//        PrgState prg7 = new PrgState(new MStack<>(), new MDictionary<>(), new MList<>(), new FileTable(), new Heap(), ex7);
 //        repo7.addProgram(prg7);
 //
 //        /*
@@ -149,7 +149,7 @@
 //        IStmt comp7_1 = new CompStmt(v, newSt);
 //        IStmt comp7_2 = new CompStmt(newSt2, print8);
 //        IStmt ex8 = new CompStmt(comp7_1, comp7_2);
-//        PrgState prg8 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), ex8);
+//        PrgState prg8 = new PrgState(new MStack<>(), new MDictionary<>(), new MList<>(), new FileTable(), new Heap(), ex8);
 //        repo8.addProgram(prg8);
 //
 //        /*
@@ -167,7 +167,7 @@
 //        IStmt comp9_2 = new CompStmt(comp9_1, newSt2_9);
 //        IStmt comp9_3 = new CompStmt(print9_1, print9_2);
 //        IStmt ex9 = new CompStmt(comp9_2, comp9_3);
-//        PrgState prg9 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), ex9);
+//        PrgState prg9 = new PrgState(new MStack<>(), new MDictionary<>(), new MList<>(), new FileTable(), new Heap(), ex9);
 //        repo9.addProgram(prg9);
 //
 //        /*
@@ -189,7 +189,7 @@
 //        IStmt comp10_4 = new CompStmt(comp10_3, print10_1);
 //        IStmt comp10_5 = new CompStmt(print10_2, ass_a_10);
 //        IStmt ex10 = new CompStmt(comp10_4, comp10_5);
-//        PrgState prg10 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), ex10);
+//        PrgState prg10 = new PrgState(new MStack<>(), new MDictionary<>(), new MList<>(), new FileTable(), new Heap(), ex10);
 //        repo10.addProgram(prg10);
 //
 //        /*
@@ -200,7 +200,7 @@
 //        ListRepository repo11 = new ListRepository("logfile.txt");
 //        Controller ctr11 = new Controller(repo11);
 //        IStmt ex11 = new CompStmt(new AssignStmt("v",new ArithmExpr('+', new ConstExpr(10), new BooleanExpr(">", new ConstExpr(2), new ConstExpr(6)))), new PrintStmt(new VarExpr("v")));
-//        PrgState prg11 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), ex11);
+//        PrgState prg11 = new PrgState(new MStack<>(), new MDictionary<>(), new MList<>(), new FileTable(), new Heap(), ex11);
 //        repo11.addProgram(prg11);
 //
 //        /*
@@ -218,7 +218,7 @@
 //        IStmt whileSt12 = new WhileStmt(new ArithmExpr('-', new VarExpr("v"), new ConstExpr(4)), inWhile12);
 //        IStmt comp12 = new CompStmt(new AssignStmt("v", new ConstExpr(6)), whileSt12);
 //        IStmt ex12 = new CompStmt(comp12, new PrintStmt(new VarExpr("v")));
-//        PrgState prg12 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), ex12);
+//        PrgState prg12 = new PrgState(new MStack<>(), new MDictionary<>(), new MList<>(), new FileTable(), new Heap(), ex12);
 //        repo12.addProgram(prg12);
 //
 //        /*
@@ -231,7 +231,7 @@
 //        ListRepository repo13 = new ListRepository("logfile.txt");
 //        Controller ctr13 = new Controller(repo13);
 //        IStmt ex13 = new WhileStmt(new ConstExpr(6), new PrintStmt(new ConstExpr(3)));
-//        PrgState prg13 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), ex13);
+//        PrgState prg13 = new PrgState(new MStack<>(), new MDictionary<>(), new MList<>(), new FileTable(), new Heap(), ex13);
 //        repo13.addProgram(prg13);
 //
 //        /*
@@ -244,7 +244,7 @@
 //        OpenFile open14_1 = new OpenFile("var_f", "test.in");
 //        OpenFile open14_2 = new OpenFile("var_f2", "test2.in");
 //        IStmt ex14 = new CompStmt(open14_1, open14_2);
-//        PrgState prg14 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), ex14);
+//        PrgState prg14 = new PrgState(new MStack<>(), new MDictionary<>(), new MList<>(), new FileTable(), new Heap(), ex14);
 //        repo14.addProgram(prg14);
 //
 //        /*
@@ -262,7 +262,7 @@
 //        CompStmt parent15 = new CompStmt(new PrintStmt(new VarExpr("v")), new PrintStmt(new ReadHeap("a")));
 //        CompStmt comp1_15 = new CompStmt(beginStmt15, fork15);
 //        IStmt ex15 = new CompStmt(comp1_15, parent15);
-//        PrgState prg15 = new PrgState(new MyStack<>(), new MyDictionary<>(), new MyList<>(), new FileTable(), new Heap(), ex15);
+//        PrgState prg15 = new PrgState(new MStack<>(), new MDictionary<>(), new MList<>(), new FileTable(), new Heap(), ex15);
 //        repo15.addProgram(prg15);
 //
 //        /* ============================================= */

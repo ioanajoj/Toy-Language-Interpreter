@@ -2,273 +2,107 @@
 
 PROGRAM STATE INDEX: 0
 *=== EXECUTION STACK ===*
-v2 <- 3
-v3 <- 4
-NewBarrier(cnt,readHeap: v2)
-fork() {
-Await(cnt)
-writeHeap: v1<-readHeap: v1 * 10
-print readHeap: v1
-}
-fork() {
-Await(cnt)
-writeHeap: v2<-readHeap: v2 * 10
-writeHeap: v2<-readHeap: v2 * 10
-print readHeap: v2
-}
-Await(cnt)
-print readHeap: v3
+b = 2
+c = 5
+Switch(a * 10)
+case b * c:print a
+print b
+case 10:print 100
+print 200
+default: print 300
+print 300
 *=== SYMBOL TABLE ===*
-{v1=1}
+{a=1}
 *=== OUTPUT ===*
 *=== FILE TABLE ===*:
 *=== HEAP MEMORY ===*
-{1=2}
+{}
 *=== LOCK TABLE ===*
 {}
 *=========================*
 
 PROGRAM STATE INDEX: 0
 *=== EXECUTION STACK ===*
-v3 <- 4
-NewBarrier(cnt,readHeap: v2)
-fork() {
-Await(cnt)
-writeHeap: v1<-readHeap: v1 * 10
-print readHeap: v1
-}
-fork() {
-Await(cnt)
-writeHeap: v2<-readHeap: v2 * 10
-writeHeap: v2<-readHeap: v2 * 10
-print readHeap: v2
-}
-Await(cnt)
-print readHeap: v3
+c = 5
+Switch(a * 10)
+case b * c:print a
+print b
+case 10:print 100
+print 200
+default: print 300
+print 300
 *=== SYMBOL TABLE ===*
-{v1=1, v2=2}
+{a=1, b=2}
 *=== OUTPUT ===*
 *=== FILE TABLE ===*:
 *=== HEAP MEMORY ===*
-{1=2, 2=3}
+{}
 *=== LOCK TABLE ===*
 {}
 *=========================*
 
 PROGRAM STATE INDEX: 0
 *=== EXECUTION STACK ===*
-NewBarrier(cnt,readHeap: v2)
-fork() {
-Await(cnt)
-writeHeap: v1<-readHeap: v1 * 10
-print readHeap: v1
-}
-fork() {
-Await(cnt)
-writeHeap: v2<-readHeap: v2 * 10
-writeHeap: v2<-readHeap: v2 * 10
-print readHeap: v2
-}
-Await(cnt)
-print readHeap: v3
+Switch(a * 10)
+case b * c:print a
+print b
+case 10:print 100
+print 200
+default: print 300
+print 300
 *=== SYMBOL TABLE ===*
-{v1=1, v2=2, v3=3}
+{a=1, b=2, c=5}
 *=== OUTPUT ===*
 *=== FILE TABLE ===*:
 *=== HEAP MEMORY ===*
-{1=2, 2=3, 3=4}
+{}
 *=== LOCK TABLE ===*
 {}
 *=========================*
 
 PROGRAM STATE INDEX: 0
 *=== EXECUTION STACK ===*
-fork() {
-Await(cnt)
-writeHeap: v1<-readHeap: v1 * 10
-print readHeap: v1
-}
-fork() {
-Await(cnt)
-writeHeap: v2<-readHeap: v2 * 10
-writeHeap: v2<-readHeap: v2 * 10
-print readHeap: v2
-}
-Await(cnt)
-print readHeap: v3
+print a
+print b
+print 300
 *=== SYMBOL TABLE ===*
-{v1=1, v2=2, v3=3, cnt=1}
+{a=1, b=2, c=5}
 *=== OUTPUT ===*
 *=== FILE TABLE ===*:
 *=== HEAP MEMORY ===*
-{1=2, 2=3, 3=4}
+{}
 *=== LOCK TABLE ===*
 {}
 *=========================*
 
 PROGRAM STATE INDEX: 0
 *=== EXECUTION STACK ===*
-fork() {
-Await(cnt)
-writeHeap: v2<-readHeap: v2 * 10
-writeHeap: v2<-readHeap: v2 * 10
-print readHeap: v2
-}
-Await(cnt)
-print readHeap: v3
+print b
+print 300
 *=== SYMBOL TABLE ===*
-{v1=1, v2=2, v3=3, cnt=1}
+{a=1, b=2, c=5}
 *=== OUTPUT ===*
-*=== FILE TABLE ===*:
-*=== HEAP MEMORY ===*
-{1=2, 2=3, 3=4}
-*=== LOCK TABLE ===*
-{}
-*=========================*
+1
 
-PROGRAM STATE INDEX: 1
-*=== EXECUTION STACK ===*
-Await(cnt)
-writeHeap: v1<-readHeap: v1 * 10
-print readHeap: v1
-*=== SYMBOL TABLE ===*
-{v1=1, v2=2, v3=3, cnt=1}
-*=== OUTPUT ===*
 *=== FILE TABLE ===*:
 *=== HEAP MEMORY ===*
-{1=2, 2=3, 3=4}
+{}
 *=== LOCK TABLE ===*
 {}
 *=========================*
 
 PROGRAM STATE INDEX: 0
 *=== EXECUTION STACK ===*
-Await(cnt)
-print readHeap: v3
+print 300
 *=== SYMBOL TABLE ===*
-{v1=1, v2=2, v3=3, cnt=1}
+{a=1, b=2, c=5}
 *=== OUTPUT ===*
-*=== FILE TABLE ===*:
-*=== HEAP MEMORY ===*
-{1=2, 2=3, 3=4}
-*=== LOCK TABLE ===*
-{}
-*=========================*
+1
+2
 
-PROGRAM STATE INDEX: 1
-*=== EXECUTION STACK ===*
-Await(cnt)
-writeHeap: v1<-readHeap: v1 * 10
-print readHeap: v1
-*=== SYMBOL TABLE ===*
-{v1=1, v2=2, v3=3, cnt=1}
-*=== OUTPUT ===*
 *=== FILE TABLE ===*:
 *=== HEAP MEMORY ===*
-{1=2, 2=3, 3=4}
-*=== LOCK TABLE ===*
 {}
-*=========================*
-
-PROGRAM STATE INDEX: 2
-*=== EXECUTION STACK ===*
-Await(cnt)
-writeHeap: v2<-readHeap: v2 * 10
-writeHeap: v2<-readHeap: v2 * 10
-print readHeap: v2
-*=== SYMBOL TABLE ===*
-{v1=1, v2=2, v3=3, cnt=1}
-*=== OUTPUT ===*
-*=== FILE TABLE ===*:
-*=== HEAP MEMORY ===*
-{1=2, 2=3, 3=4}
-*=== LOCK TABLE ===*
-{}
-*=========================*
-
-PROGRAM STATE INDEX: 0
-*=== EXECUTION STACK ===*
-Await(cnt)
-print readHeap: v3
-*=== SYMBOL TABLE ===*
-{v1=1, v2=2, v3=3, cnt=1}
-*=== OUTPUT ===*
-*=== FILE TABLE ===*:
-*=== HEAP MEMORY ===*
-{1=2, 2=3, 3=4}
-*=== LOCK TABLE ===*
-{}
-*=========================*
-
-PROGRAM STATE INDEX: 1
-*=== EXECUTION STACK ===*
-Await(cnt)
-writeHeap: v1<-readHeap: v1 * 10
-print readHeap: v1
-*=== SYMBOL TABLE ===*
-{v1=1, v2=2, v3=3, cnt=1}
-*=== OUTPUT ===*
-*=== FILE TABLE ===*:
-*=== HEAP MEMORY ===*
-{1=2, 2=3, 3=4}
-*=== LOCK TABLE ===*
-{}
-*=========================*
-
-PROGRAM STATE INDEX: 2
-*=== EXECUTION STACK ===*
-Await(cnt)
-writeHeap: v2<-readHeap: v2 * 10
-writeHeap: v2<-readHeap: v2 * 10
-print readHeap: v2
-*=== SYMBOL TABLE ===*
-{v1=1, v2=2, v3=3, cnt=1}
-*=== OUTPUT ===*
-*=== FILE TABLE ===*:
-*=== HEAP MEMORY ===*
-{1=2, 2=3, 3=4}
-*=== LOCK TABLE ===*
-{}
-*=========================*
-
-PROGRAM STATE INDEX: 0
-*=== EXECUTION STACK ===*
-print readHeap: v3
-*=== SYMBOL TABLE ===*
-{v1=1, v2=2, v3=3, cnt=1}
-*=== OUTPUT ===*
-*=== FILE TABLE ===*:
-*=== HEAP MEMORY ===*
-{1=2, 2=3, 3=4}
-*=== LOCK TABLE ===*
-{}
-*=========================*
-
-PROGRAM STATE INDEX: 1
-*=== EXECUTION STACK ===*
-writeHeap: v1<-readHeap: v1 * 10
-print readHeap: v1
-*=== SYMBOL TABLE ===*
-{v1=1, v2=2, v3=3, cnt=1}
-*=== OUTPUT ===*
-*=== FILE TABLE ===*:
-*=== HEAP MEMORY ===*
-{1=2, 2=3, 3=4}
-*=== LOCK TABLE ===*
-{}
-*=========================*
-
-PROGRAM STATE INDEX: 2
-*=== EXECUTION STACK ===*
-writeHeap: v2<-readHeap: v2 * 10
-writeHeap: v2<-readHeap: v2 * 10
-print readHeap: v2
-*=== SYMBOL TABLE ===*
-{v1=1, v2=2, v3=3, cnt=1}
-*=== OUTPUT ===*
-*=== FILE TABLE ===*:
-*=== HEAP MEMORY ===*
-{1=2, 2=3, 3=4}
 *=== LOCK TABLE ===*
 {}
 *=========================*
@@ -276,90 +110,14 @@ print readHeap: v2
 PROGRAM STATE INDEX: 0
 *=== EXECUTION STACK ===*
 *=== SYMBOL TABLE ===*
-{v1=1, v2=2, v3=3, cnt=1}
+{a=1, b=2, c=5}
 *=== OUTPUT ===*
-4
-
-*=== FILE TABLE ===*:
-*=== HEAP MEMORY ===*
-{1=20, 2=30, 3=4}
-*=== LOCK TABLE ===*
-{}
-*=========================*
-
-PROGRAM STATE INDEX: 1
-*=== EXECUTION STACK ===*
-print readHeap: v1
-*=== SYMBOL TABLE ===*
-{v1=1, v2=2, v3=3, cnt=1}
-*=== OUTPUT ===*
-4
-
-*=== FILE TABLE ===*:
-*=== HEAP MEMORY ===*
-{1=20, 2=30, 3=4}
-*=== LOCK TABLE ===*
-{}
-*=========================*
-
-PROGRAM STATE INDEX: 2
-*=== EXECUTION STACK ===*
-writeHeap: v2<-readHeap: v2 * 10
-print readHeap: v2
-*=== SYMBOL TABLE ===*
-{v1=1, v2=2, v3=3, cnt=1}
-*=== OUTPUT ===*
-4
-
-*=== FILE TABLE ===*:
-*=== HEAP MEMORY ===*
-{1=20, 2=30, 3=4}
-*=== LOCK TABLE ===*
-{}
-*=========================*
-
-PROGRAM STATE INDEX: 1
-*=== EXECUTION STACK ===*
-*=== SYMBOL TABLE ===*
-{v1=1, v2=2, v3=3, cnt=1}
-*=== OUTPUT ===*
-4
-20
-
-*=== FILE TABLE ===*:
-*=== HEAP MEMORY ===*
-{1=20, 2=300, 3=4}
-*=== LOCK TABLE ===*
-{}
-*=========================*
-
-PROGRAM STATE INDEX: 2
-*=== EXECUTION STACK ===*
-print readHeap: v2
-*=== SYMBOL TABLE ===*
-{v1=1, v2=2, v3=3, cnt=1}
-*=== OUTPUT ===*
-4
-20
-
-*=== FILE TABLE ===*:
-*=== HEAP MEMORY ===*
-{1=20, 2=300, 3=4}
-*=== LOCK TABLE ===*
-{}
-*=========================*
-
-PROGRAM STATE INDEX: 2
-*=== EXECUTION STACK ===*
-*=== SYMBOL TABLE ===*
-{v1=1, v2=2, v3=3, cnt=1}
-*=== OUTPUT ===*
-4
-20
+1
+2
 300
 
 *=== FILE TABLE ===*:
 *=== HEAP MEMORY ===*
-{1=20, 2=300, 3=4}
+{}
 *=== LOCK TABLE ===*
 {}

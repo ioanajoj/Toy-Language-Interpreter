@@ -1,10 +1,10 @@
 package Model;
 
 import Model.Containers.*;
-import Model.Containers.MyDictionary;
-import Model.Containers.MyIDictionary;
-import Model.Containers.MyIList;
-import Model.Containers.MyIStack;
+import Model.Containers.MDictionary;
+import Model.Containers.IDictionary;
+import Model.Containers.IList;
+import Model.Containers.IStack;
 import Model.Exceptions.DivisionByZeroException;
 import Model.Exceptions.InfiniteLoopException;
 import Model.Exceptions.MissingVariableException;
@@ -18,15 +18,15 @@ import java.util.List;
 public class PrgState {
     private String name;
     private int id;
-    private Model.Containers.MyIStack<IStmt> exeStack;
-    private Model.Containers.MyIDictionary<String, Integer> symTable;
-    private Model.Containers.MyIList<Integer> out;
+    private IStack<IStmt> exeStack;
+    private IDictionary<String, Integer> symTable;
+    private IList<Integer> out;
     private IFileTable<Integer, Pair<String, BufferedReader>> fileTable;
     private IHeap<Integer, Integer> heapMemory;
     private ILockTable<Integer, Integer> lockTable;
     private ICyclicBarrier<Integer, Pair<Integer, List<Integer>>> cyclicBarrier;
 
-    public PrgState(String name, Model.Containers.MyIStack<IStmt> exeStack, Model.Containers.MyIDictionary<String, Integer> symTable, Model.Containers.MyIList<Integer> out, IFileTable<Integer, Pair<String, BufferedReader>> fileTable, IHeap<Integer, Integer> heapMemory, ILockTable<Integer, Integer> lockTable, ICyclicBarrier<Integer, Pair<Integer, List<Integer>>> cyclicBarrier, IStmt originalProgram) {
+    public PrgState(String name, IStack<IStmt> exeStack, IDictionary<String, Integer> symTable, IList<Integer> out, IFileTable<Integer, Pair<String, BufferedReader>> fileTable, IHeap<Integer, Integer> heapMemory, ILockTable<Integer, Integer> lockTable, ICyclicBarrier<Integer, Pair<Integer, List<Integer>>> cyclicBarrier, IStmt originalProgram) {
         System.out.println("New prg with id = " + id);
         this.name = name;
         this.exeStack = exeStack;
@@ -60,21 +60,21 @@ public class PrgState {
         return this.exeStack.isEmpty();
     }
 
-    public MyIStack<IStmt> getExeStack() {
+    public IStack<IStmt> getExeStack() {
         return exeStack;
     }
 
-    public Model.Containers.MyIDictionary<String, Integer> getSymTable() {
+    public IDictionary<String, Integer> getSymTable() {
         return symTable;
     }
 
-    public Model.Containers.MyIDictionary<String, Integer> getSymTableCopy() {
-        MyIDictionary<String, Integer> newSymTable = new MyDictionary<>();
+    public IDictionary<String, Integer> getSymTableCopy() {
+        IDictionary<String, Integer> newSymTable = new MDictionary<>();
         this.symTable.keys().forEach(k -> newSymTable.put(k,symTable.get(k)));
         return newSymTable;
     }
 
-    public MyIList<Integer> getOut() {
+    public IList<Integer> getOut() {
         return out;
     }
 

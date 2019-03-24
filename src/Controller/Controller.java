@@ -2,10 +2,10 @@ package Controller;
 
 import Model.*;
 import Model.Containers.*;
-import Model.Containers.MyDictionary;
-import Model.Containers.MyIDictionary;
-import Model.Containers.MyIList;
-import Model.Containers.MyIStack;
+import Model.Containers.MDictionary;
+import Model.Containers.IDictionary;
+import Model.Containers.IList;
+import Model.Containers.IStack;
 import Model.Exceptions.DivisionByZeroException;
 import Model.Exceptions.InfiniteLoopException;
 import Model.Exceptions.MissingVariableException;
@@ -31,13 +31,9 @@ public class Controller {
         this.repo = repo;
     }
 
-    private void garbageGarbage() {
-        MyDictionary<String, Integer> sharedSymTable = new MyDictionary<>();
-        // add values from all symtables into a shared symtable - values
-        repo.getPrograms().forEach(prg-> {
-            prg.getSymTable().keys().forEach(k->sharedSymTable.put(k,prg.getSymTable().get(k)));
-        });
-        // call conservative chestie for each heap
+    private void garbageCollector() {
+        MDictionary<String, Integer> sharedSymTable = new MDictionary<>();
+        repo.getPrograms().forEach(prg-> prg.getSymTable().keys().forEach(k->sharedSymTable.put(k,prg.getSymTable().get(k))));
         repo.getPrograms().forEach(prg->prg.getHeapMemory()
                 .setContent(ConservativeGarbageCollector(sharedSymTable.values(), prg.getHeapMemory().getContent())));
     }
@@ -55,16 +51,16 @@ public class Controller {
     private void displayState(PrgState state) {
         System.out.println("*======================*");
         System.out.println("Execution Stack:");
-        MyIStack<IStmt> exeStack = state.getExeStack();
+        IStack<IStmt> exeStack = state.getExeStack();
         if(!exeStack.toString().equals(""))
             System.out.println(exeStack.toString());
 
         System.out.println("Symbol Table:");
-        MyIDictionary<String, Integer> symTable = state.getSymTable();
+        IDictionary<String, Integer> symTable = state.getSymTable();
         System.out.println(symTable.toString());
 
         System.out.println("Output:");
-        MyIList<Integer> output = state.getOut();
+        IList<Integer> output = state.getOut();
         System.out.println(output.toString());
 
         System.out.println("FileTable:");
@@ -79,7 +75,7 @@ public class Controller {
     }
 
     private PrgState oneStepEval(PrgState state) throws InfiniteLoopException, MissingVariableException, DivisionByZeroException, IOException {
-        MyIStack<IStmt> stack = state.getExeStack();
+        IStack<IStmt> stack = state.getExeStack();
         IStmt currentStmt = stack.pop();
         return currentStmt.execute(state);
     }   //return used for later assignments
@@ -87,18 +83,14 @@ public class Controller {
     public void allStepEval() throws InfiniteLoopException, MissingVariableException, DivisionByZeroException, IOException {
         PrgState prg = repo.getCurrentPrg();
         repo.clearFile();
-        int index = repo.getCurrentIndex();
         while(!prg.getExeStack().isEmpty()) {
-//            oneStepEval(prg);
             prg.oneStep();
             prg.getHeapMemory().setContent(ConservativeGarbageCollector(
                     prg.getSymTable().values(),
                     prg.getHeapMemory().getContent()));
-//            repo.logPrgState(index);
             displayState(prg);
         }
         prg.closeAllFiles();
-//        repo.logPrgState(index);
         displayState(prg);
     }
 
@@ -130,7 +122,7 @@ public class Controller {
             programs.get(0).closeAllFiles();
 
         // garbage collector
-        garbageGarbage();
+        garbageCollector();
 
         // log all programs
         repo.logAll();
@@ -163,7 +155,6 @@ public class Controller {
 
     public void endEvalGUI() {
         executor.shutdownNow();
-
     }
 
     public void oneStepGUI() {
@@ -214,7 +205,7 @@ public class Controller {
             programs.get(0).closeAllFiles();
 
         // garbage garbage
-        garbageGarbage();
+        garbageCollector();
 
         // log all programs
         repo.logAll();

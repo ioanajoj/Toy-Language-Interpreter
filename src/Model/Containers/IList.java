@@ -2,7 +2,7 @@ package Model.Containers;
 
 import Model.Exceptions.InvalidIndexException;
 
-public interface MyIList<T> {
+public interface IList<T> {
     void add(T elem);
     void add(int pos, T elem);
     boolean contains(T elem);

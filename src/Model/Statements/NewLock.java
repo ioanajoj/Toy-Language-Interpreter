@@ -1,6 +1,6 @@
 package Model.Statements;
 
-import Model.Containers.MyIDictionary;
+import Model.Containers.IDictionary;
 import Model.PrgState;
 
 public class NewLock implements IStmt {
@@ -15,7 +15,7 @@ public class NewLock implements IStmt {
     public PrgState execute(PrgState state) {
         lock.lock();
         int index = state.getLockTable().put(-1);
-        MyIDictionary<String, Integer> symTable = state.getSymTable();
+        IDictionary<String, Integer> symTable = state.getSymTable();
         symTable.put(variable, index);
         lock.unlock();
         return null;
